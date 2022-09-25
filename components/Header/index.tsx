@@ -43,7 +43,7 @@ export default function Header() {
 
   useEffect(() => {
     dispatch(reduxSetSearch(debounce))
-  }, [debounce])
+  }, [debounce, dispatch, reduxSetSearch])
 
   return (
     <header className={style.Header}>
@@ -75,6 +75,7 @@ export default function Header() {
 
       <Image
         src={BgImage}
+        alt="background"
         className={style.Background}
         layout="fill"
         objectFit="cover"
@@ -113,7 +114,7 @@ export default function Header() {
               <Link href="/">
                 <a className={style.Logo}>
                   <div className={style.Image}>
-                    <Image src={Logo} />
+                    <Image src={Logo} alt="logo" />
                   </div>
                   <p>
                     <Primary className={style.Bee}>BEE</Primary> MARKET
@@ -123,19 +124,19 @@ export default function Header() {
 
               <div className={style.Socials}>
                 <div className={style.Particle}>
-                  <Image src={HexagonSmall} />
+                  <Image src={HexagonSmall} alt="hex" />
                 </div>
                 <div className={style.Particle}>
-                  <Image src={HexagonSmall} />
+                  <Image src={HexagonSmall} alt="hex" />
                 </div>
                 <a href="" target="_blank">
-                  <Image src={Telegram} />
+                  <Image src={Telegram} alt="telegram" />
                 </a>
                 <a href="" target="_blank">
-                  <Image src={Instagram} />
+                  <Image src={Instagram} alt="instagram" />
                 </a>
                 <a href="" target="_blank">
-                  <Image src={Facebook} />
+                  <Image src={Facebook} alt="facebook" />
                 </a>
               </div>
             </div>
@@ -168,11 +169,11 @@ export default function Header() {
 
               <div className={style.Cart}>
                 <div className={style.Particle}>
-                  <Image src={HexagonSmall} />
+                  <Image src={HexagonSmall} alt="hex" />
                 </div>
                 <p>Кошик</p>
                 <div className={style.Image}>
-                  <Image src={HexagonCart} />
+                  <Image src={HexagonCart} alt="hex" />
                 </div>
                 <p className={style.Count}>
                   {Math.min(Math.max(0, count), 999)}

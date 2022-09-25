@@ -38,12 +38,19 @@ export default function Slider() {
             layout="fill"
             objectFit="cover"
             quality={100}
+            alt="slide"
           />
         ))}
       </div>
 
       <div className={style.Transition}>
-        <Image src={SliderTransition} layout="fixed" width={1920} height={30} />
+        <Image
+          src={SliderTransition}
+          layout="fixed"
+          width={1920}
+          height={30}
+          alt="transition"
+        />
       </div>
 
       {/* TODO: Particles */}
@@ -56,6 +63,7 @@ export default function Slider() {
               layout="intrinsic"
               width={725}
               height={334}
+              alt="paint_strokes"
             />
           </div>
 

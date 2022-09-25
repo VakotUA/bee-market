@@ -13,10 +13,10 @@ export default function ADS({ image_s, image_l }: Props) {
     <section className={style.Ads}>
       <Container className={style.Content}>
         <div className={style.Block}>
-          <Image src={image_l} width={823} height={273} />
+          <Image src={image_l} width={823} height={273} alt="banner" />
         </div>
         <div className={style.Block}>
-          <Image src={image_s} width={547} height={273} />
+          <Image src={image_s} width={547} height={273} alt="banner" />
         </div>
       </Container>
     </section>

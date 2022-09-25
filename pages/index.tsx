@@ -2,10 +2,10 @@ import type { NextPage } from 'next'
 import Slider from '../components/Slider'
 import Catalog from '../components/Catalog'
 import ADS from '../components/ADS'
+import Discount from '../components/DiscountedProducts'
 
 import ADSImage1 from '../assets/images/ads_1.png'
 import ADSImage2 from '../assets/images/ads_2.png'
-import Discount from '../components/DiscountedProducts'
 
 const Main: NextPage = () => {
   return (

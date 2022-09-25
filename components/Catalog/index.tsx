@@ -2,7 +2,6 @@ import style from './style.module.scss'
 import { Container } from '../UI/Container'
 import { Primary } from '../UI/PrimaryText'
 import Link from 'next/link'
-import Image from 'next/image'
 
 import MOCImage from '../../assets/images/moc_category.png'
 const config = [

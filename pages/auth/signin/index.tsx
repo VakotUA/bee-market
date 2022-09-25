@@ -1,3 +1,4 @@
+import type { NextPage } from 'next'
 import { getProviders, signIn, useSession } from 'next-auth/react'
 import type { Provider } from 'next-auth/providers'
 import { useRouter } from 'next/router'
