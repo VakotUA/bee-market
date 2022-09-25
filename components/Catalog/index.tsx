@@ -3,7 +3,7 @@ import { Container } from '../UI/Container'
 import { Primary } from '../UI/PrimaryText'
 import Link from 'next/link'
 
-import MOCImage from '../../assets/images/moc_category.png'
+import MOCImage from '../../assets/images/moc/moc_category.png'
 const config = [
   {
     id: 1,

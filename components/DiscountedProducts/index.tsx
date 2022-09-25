@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import Link from 'next/link'
 import { Button } from '../UI/Button'
 
-import MOCImage from '../../assets/images/moc_product.png'
+import MOCImage from '../../assets/images/moc/moc_product.png'
 const moc_categories = [
   {
     id: 1,
