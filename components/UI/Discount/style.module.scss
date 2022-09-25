@@ -1,0 +1,19 @@
+@import '../../../styles/variables.scss';
+
+.Discount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: $lightDarkColor;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  background: linear-gradient(
+    135deg,
+    $primaryColor1,
+    $primaryColor2,
+    $primaryColor3
+  );
+}

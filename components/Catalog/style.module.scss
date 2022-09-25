@@ -95,6 +95,8 @@
 
             background: transparent;
             transition: background 0.3s;
+
+            pointer-events: none;
           }
 
           &:hover::after {

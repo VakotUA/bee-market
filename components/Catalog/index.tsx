@@ -80,7 +80,7 @@ const config = [
   {
     id: 13,
     lable: 'test moc category',
-    image: MOCImage.src,
+    image: null,
     link: '',
   },
   {
@@ -92,7 +92,7 @@ const config = [
   {
     id: 15,
     lable: 'test moc category',
-    image: MOCImage.src,
+    image: null,
     link: '123124',
   },
 ]

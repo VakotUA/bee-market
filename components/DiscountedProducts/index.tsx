@@ -1,9 +1,13 @@
 import { Container } from '../UI/Container'
+import { Button } from '../UI/Button'
+import { DiscountMark } from '../UI/Discount'
+import { Select } from '../UI/Select'
 import style from './style.module.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
 import Link from 'next/link'
-import { Button } from '../UI/Button'
+
+import { BiChevronUp, BiChevronDown } from 'react-icons/bi'
 
 import MOCImage from '../../assets/images/moc/moc_product.png'
 const moc_categories = [
@@ -28,18 +32,16 @@ const moc_products = [
   {
     id: '1111111111',
     name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
-    image: MOCImage.src,
     link: '/123',
     price: 150,
-    discount: 15,
+    discount: 1,
   },
   {
     id: '2222222222',
     name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
-    image: MOCImage.src,
     link: '/123',
     price: 250,
-    discount: 15,
+    discount: 5,
   },
   {
     id: '33333333333',
@@ -47,7 +49,7 @@ const moc_products = [
     image: MOCImage.src,
     link: '/123',
     price: 350,
-    discount: 15,
+    discount: 3,
   },
   {
     id: '44444444444',
@@ -55,7 +57,7 @@ const moc_products = [
     image: MOCImage.src,
     link: '/123',
     price: 550,
-    discount: 15,
+    discount: 2,
   },
   {
     id: '55555555555',
@@ -63,23 +65,21 @@ const moc_products = [
     image: MOCImage.src,
     link: '/123',
     price: 450,
-    discount: 15,
+    discount: 7,
   },
   {
     id: '66666666666',
     name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
-    image: MOCImage.src,
     link: '/123',
     price: 950,
-    discount: 15,
+    discount: 4,
   },
   {
     id: '77777777777',
     name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
-    image: MOCImage.src,
     link: '/123',
     price: 750,
-    discount: 15,
+    discount: 9,
   },
   {
     id: '888888888888',
@@ -87,15 +87,14 @@ const moc_products = [
     image: MOCImage.src,
     link: '/123',
     price: 850,
-    discount: 15,
+    discount: 0,
   },
   {
     id: '999999999999',
     name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
-    image: MOCImage.src,
     link: '/123',
     price: 650,
-    discount: 15,
+    discount: 7,
   },
   {
     id: '000000000000',
@@ -103,11 +102,22 @@ const moc_products = [
     image: MOCImage.src,
     link: '/123',
     price: 50,
-    discount: 15,
+    discount: 8,
   },
 ]
+interface IProduct {
+  id: string | number
+  name: string
+  image?: string
+  link: string
+  price: number
+  discount: number | 0
+}
 
 export default function Discount() {
+  const defaultData = moc_products
+  const [data, setData] = useState<IProduct[]>(defaultData)
+
   // filter [0] = filter by all categories
   // filter [category_id] = filter by specific category
   const [filter, setFilter] = useState(0)
@@ -117,9 +127,23 @@ export default function Discount() {
   // direction: [за зростанням, за спаданням]
   // }
   const [sorting, setSorting] = useState<{
-    order: string | null
+    order: keyof IProduct
     direction: boolean
-  }>({ order: null, direction: true })
+  }>({ order: 'name', direction: true })
+
+  // useEffect(() => {}, [defaultData, setData, filter])
+
+  useEffect(() => {
+    setData([
+      ...(sorting.direction
+        ? data.sort(
+            (a, b) => (a[sorting.order] as any) - (b[sorting.order] as any)
+          )
+        : data.sort(
+            (b, a) => (a[sorting.order] as any) - (b[sorting.order] as any)
+          )),
+    ])
+  }, [data, setData, sorting])
 
   return (
     <section className={style.Discount}>
@@ -153,9 +177,47 @@ export default function Discount() {
           </ul>
         </div>
 
+        <div className={style.Sorting}>
+          <div />
+          <div>
+            <p>Сортування:</p>
+
+            <Select
+              className={style.Select}
+              options={[
+                {
+                  value: 'name',
+                  lable: 'Назва',
+                },
+                {
+                  value: 'price',
+                  lable: 'Ціна',
+                },
+                {
+                  value: 'discount',
+                  lable: 'Знижка',
+                },
+              ]}
+              value={sorting.order}
+              onSelect={(newValue: keyof IProduct) =>
+                setSorting({ ...sorting, order: newValue })
+              }
+              hideOnSelect
+            />
+
+            <button
+              onClick={() =>
+                setSorting({ ...sorting, direction: !sorting.direction })
+              }
+            >
+              {sorting.direction ? <BiChevronUp /> : <BiChevronDown />}
+            </button>
+          </div>
+        </div>
+
         <div className={style.List}>
           <ul>
-            {moc_products.map((item) => (
+            {data.map((item) => (
               <li key={item.id} className={style.Card}>
                 <Link href={item.link}>
                   <a>
@@ -163,17 +225,27 @@ export default function Discount() {
                       className={style.Image}
                       style={{ backgroundImage: `url(${item.image})` }}
                     >
-                      <div className={style.DiscountMark}>
-                        Знижка {item.discount}%
-                      </div>
+                      <DiscountMark
+                        value={item.discount}
+                        className={style.DiscountMark}
+                      />
                     </div>
+
                     <div className={style.Description}>
                       <p>{item.name}</p>
                       <div>
                         <p>{item.id}</p>
                         <span>
                           <p>{item.price}грн</p>
-                          <Button className={style.Button}>В кошик</Button>
+                          <Button
+                            className={style.Button}
+                            onClick={(e) => {
+                              e.preventDefault()
+                              // TODO: some logic
+                            }}
+                          >
+                            В кошик
+                          </Button>
                         </span>
                       </div>
                     </div>
@@ -182,6 +254,13 @@ export default function Discount() {
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className={style.Button}>
+          <div />
+          <Button className={style.Button}>
+            <Link href="/">БІЛЬШЕ ТОВАРІВ</Link>
+          </Button>
         </div>
       </Container>
     </section>
