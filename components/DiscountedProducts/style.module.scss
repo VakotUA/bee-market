@@ -1,0 +1,260 @@
+@import '../../styles/variables.scss';
+
+.Discount {
+  margin-top: 50px;
+
+  margin-bottom: 200px;
+
+  .Content {
+    .Title {
+      display: flex;
+      justify-content: center;
+
+      div {
+        position: relative;
+
+        h2 {
+          font-size: 48px;
+          font-weight: 900;
+
+          margin-bottom: 20px;
+        }
+
+        p {
+          position: absolute;
+
+          &:nth-child(1) {
+            font-size: 28px;
+            font-weight: 900;
+
+            left: -20px;
+            transform: rotate(10deg);
+          }
+
+          &:nth-child(2) {
+            font-size: 24px;
+            font-weight: 800;
+
+            left: -36px;
+            top: 23px;
+            transform: rotate(-26deg);
+          }
+
+          &:nth-child(3) {
+            font-size: 20px;
+            font-weight: 700;
+
+            right: -20px;
+            top: -2px;
+            transform: rotate(-26deg);
+          }
+
+          @media (max-width: $md7) {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .Filters {
+      ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        li {
+          cursor: pointer;
+          padding: 4px 12px;
+
+          background-color: transparent;
+          box-shadow: 0 2px 4px 0 transparent;
+          border-radius: 5px;
+
+          transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+
+          color: $lightDarkColor;
+
+          font-size: 14px;
+          font-weight: 600;
+
+          &.Active {
+            background-color: $lightColor;
+            color: $darkColor;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+          }
+
+          &:hover {
+            color: $darkColor;
+          }
+        }
+      }
+    }
+
+    .List {
+      margin-top: 50px;
+
+      ul {
+        background-color: $lightColor;
+        display: grid;
+        gap: 1px;
+
+        grid-template-columns: repeat(5, 1fr);
+        @media (max-width: $md3) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        @media (max-width: 1024px) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        @media (max-width: $md5) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        @media (max-width: $md7) {
+          grid-template-columns: 1fr;
+        }
+
+        .Card {
+          aspect-ratio: 1/1.5;
+          @media (max-width: $md7) {
+            aspect-ratio: 1/1.25;
+          }
+          box-shadow: 0 0 0 1px $lightenDarkColor;
+
+          a {
+            width: 100%;
+            height: 100%;
+
+            .Image {
+              width: 100%;
+              aspect-ratio: 1/1;
+
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+
+              position: relative;
+
+              .DiscountMark {
+                position: absolute;
+                left: 0;
+                top: 0;
+
+                height: 20px;
+                width: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                color: $darkColor;
+
+                font-size: 12px;
+                font-weight: 700;
+
+                background-color: gold;
+
+                border-radius: 0 0 10px 0;
+              }
+            }
+
+            .Description {
+              width: 100%;
+              aspect-ratio: 1/0.5;
+              @media (max-width: $md7) {
+                aspect-ratio: 1/0.25;
+              }
+
+              padding: 10px 20px;
+              @media (max-width: $md4) {
+                padding: 5px 10px;
+              }
+
+              display: flex;
+              justify-content: space-between;
+              flex-direction: column;
+              > p {
+                font-weight: 600;
+                font-size: 14px;
+                word-break: break-word;
+                overflow-wrap: break-word;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+                -webkit-box-orient: vertical;
+              }
+
+              > div {
+                > p {
+                  font-size: 12px;
+                  font-weight: 600;
+                  margin-bottom: 8px;
+                  opacity: 0.5;
+                }
+
+                > span {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-end;
+
+                  > p {
+                    font-size: 24px;
+                    font-weight: 800;
+
+                    @media (max-width: $md4) {
+                      font-size: 20px;
+                    }
+                    @media (max-width: $md7) {
+                      font-size: 24px;
+                    }
+                  }
+
+                  .Button {
+                    width: 100px;
+                    height: 30px;
+
+                    color: $darkColor;
+
+                    font-size: 12px;
+                    font-weight: 700;
+
+                    @media (max-width: $md4) {
+                      width: 80px;
+                      height: 25px;
+                      font-size: 11px;
+                    }
+                    @media (max-width: $md7) {
+                      width: 100px;
+                      height: 30px;
+                      font-size: 14px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          position: relative;
+
+          &::after {
+            content: '';
+
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+
+            background: transparent;
+            transition: background 0.3s;
+          }
+
+          &:hover::after {
+            background: rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
+    }
+  }
+}

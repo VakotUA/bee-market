@@ -1,0 +1,31 @@
+@import './reset.scss';
+@import './variables.scss';
+@import '../assets/fonts/stylesheet.scss';
+
+html,
+body {
+  font-family: 'Gilroy';
+  color: $darkColor;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  scroll-behavior: smooth;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  background: $bgColor;
+
+  width: 100vw;
+  min-height: 1000px;
+
+  position: relative;
+
+  padding-top: 130px;
+  @media (max-width: $md4) {
+    padding-top: 90px;
+  }
+}

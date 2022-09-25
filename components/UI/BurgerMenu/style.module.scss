@@ -1,0 +1,50 @@
+@import '../../../styles/variables.scss';
+
+.BurgerMenu {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    cursor: pointer;
+  }
+
+  span {
+    pointer-events: none;
+    content: '';
+    display: block;
+    background: $darkColor;
+    border-radius: 2px;
+    height: 4px;
+    margin: 4px 0;
+    transition: 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+    &:nth-of-type(1) {
+      width: 100%;
+      margin-top: 5px;
+    }
+    &:nth-of-type(2) {
+      width: 100%;
+    }
+    &:nth-of-type(3) {
+      width: 100%;
+    }
+  }
+
+  &.Active {
+    span:nth-of-type(1) {
+      transform-origin: center;
+      width: 50%;
+      transform: rotatez(45deg) translateX(3px);
+    }
+    span:nth-of-type(2) {
+      transform-origin: center;
+      transform: rotatez(-45deg);
+    }
+    span:nth-of-type(3) {
+      align-self: flex-end;
+      transform-origin: center;
+      width: 50%;
+      transform: rotatez(45deg) translate(7px, -11px);
+    }
+  }
+}

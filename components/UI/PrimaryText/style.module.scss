@@ -1,0 +1,12 @@
+@import '../../../styles/variables.scss';
+
+.Primary {
+  background: -webkit-linear-gradient(
+    -60deg,
+    $primaryColor1,
+    $primaryColor2,
+    $primaryColor3
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -1,0 +1,32 @@
+@import '../../../styles/variables.scss';
+
+.Link {
+  position: relative;
+  color: $darkColor;
+  font-weight: 600;
+  font-size: 14px;
+
+  // underline effect
+  &::after {
+    content: '';
+    background: $lightDarkColor;
+    width: 0;
+    height: 1px;
+    opacity: 0;
+    transition: opacity 0.3s, width 0.3s;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -4px;
+  }
+  &.Active::after {
+    width: 50%;
+    height: 2px;
+    opacity: 1;
+  }
+  &:hover::after {
+    width: 100%;
+    opacity: 1;
+  }
+}
