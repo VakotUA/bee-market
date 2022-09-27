@@ -9,13 +9,14 @@ import Facebook from '../../assets/images/facebook_outlined.png'
 import Instagram from '../../assets/images/instagram_outlined.png'
 import Telegram from '../../assets/images/telegram_outlined.png'
 
+import BgImage from '../../assets/images/media_background.png'
+
 export default function Media() {
   return (
     <section className={style.Media}>
       <Container className={style.Content}>
         <div className={style.Block}>
-          {/* BUG: Breaking scroll for all other images */}
-          {/* <div className={style.Background}>
+          <div className={style.Background}>
             <Image
               src={BgImage}
               alt="background"
@@ -23,11 +24,7 @@ export default function Media() {
               height={1006}
               layout="fixed"
             />
-          </div> */}
-          {/* <div
-            className={style.Background}
-            style={{ backgroundImage: `url(${BgImage.src})` }}
-          /> */}
+          </div>
 
           <h2>Вітаю дорогий відвідувач</h2>
 

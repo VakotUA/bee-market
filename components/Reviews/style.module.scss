@@ -1,3 +1,190 @@
+@import '../../styles/variables.scss';
+
 .Reviews {
   margin-top: 50px;
+
+  .Title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h2 {
+      font-size: 48px;
+      font-weight: 900;
+
+      margin-bottom: 20px;
+    }
+  }
+
+  .Slider {
+    margin-top: 25px;
+    padding: 50px 50px 100px 50px;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+
+    height: 450px;
+    @media (max-width: $md4) {
+      height: 500px;
+    }
+    @media (max-width: $md5) {
+      height: 650px;
+    }
+
+    background: #ffffff88;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+
+    .Block {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      .Item {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        opacity: 0;
+        &.Active {
+          opacity: 1;
+        }
+
+        .ItemContent {
+          position: relative;
+
+          width: 100%;
+          height: 100%;
+
+          display: flex;
+          gap: 2rem;
+
+          font-size: 18px;
+
+          .ImageBlock {
+            z-index: 0;
+            pointer-events: none;
+
+            .Hex:nth-child(1) {
+              position: absolute;
+              left: -29px;
+              top: -24px;
+
+              color: $primaryColor2;
+              z-index: -1;
+            }
+
+            .Image {
+              position: absolute;
+              left: 10px;
+              top: 0;
+              width: 130px;
+              height: 150px;
+
+              background-color: $darkColor;
+
+              clip-path: polygon(
+                0 74.73%,
+                0 24.73%,
+                50% 0,
+                100% 24.73%,
+                100% 74.73%,
+                50% 100%
+              );
+            }
+          }
+
+          .Message {
+            padding-top: 50px;
+            @media (max-width: $md4) {
+              padding-top: 20px;
+            }
+            margin-left: 140px;
+            opacity: 0.9;
+
+            .User {
+              font-size: 20px;
+              margin-bottom: 0.75rem;
+            }
+
+            .Date {
+              color: $lightDarkColor;
+              margin-bottom: 2.5rem;
+            }
+
+            .Text {
+              font-size: 16px;
+              font-style: italic;
+              font-weight: 500;
+
+              line-height: 2rem;
+
+              overflow-wrap: break-word;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-line-clamp: 5;
+              line-clamp: 5;
+              -webkit-box-orient: vertical;
+
+              .Chevron {
+                color: $primaryColor2;
+              }
+
+              @media (max-width: $md4) {
+                position: absolute;
+                top: 180px;
+                left: 0;
+              }
+
+              @media (max-width: $md5) {
+                -webkit-line-clamp: 10;
+                line-clamp: 10;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .Controls {
+      position: absolute;
+      height: 100px;
+
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+
+      .Arrow {
+        color: $darkColor;
+        cursor: pointer;
+      }
+
+      .Options {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        div {
+          transition: color 0.3s;
+          color: $primaryColor2;
+
+          cursor: pointer;
+
+          &.Active {
+            color: $darkColor;
+          }
+        }
+      }
+    }
+  }
 }
