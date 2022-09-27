@@ -1,12 +1,12 @@
 import { Container } from '../Layout/Container'
 import style from './style.module.scss'
 
-export default function Footer() {
+export default function Partners() {
   return (
-    <footer className={style.Footer}>
+    <section className={style.Partners}>
       <Container>
-        <h1>Footer</h1>
+        <h1>Partners</h1>
       </Container>
-    </footer>
+    </section>
   )
 }

@@ -1,0 +1,123 @@
+@import '../../../../styles/variables.scss';
+
+.Card {
+  // aspect-ratio: 1/1.5;
+  // @media (max-width: $md4) {
+  //   aspect-ratio: 1/1.25;
+  // }
+  box-shadow: 0 0 0 1px $lightenDarkColor;
+
+  a {
+    position: relative;
+
+    .Image {
+      width: 100%;
+      aspect-ratio: 1/1;
+
+      padding: 20px;
+
+      .DiscountMark {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        height: 20px;
+        width: 80px;
+
+        border-radius: 0 0 10px 0;
+      }
+    }
+
+    .Description {
+      width: 100%;
+      height: 120px;
+      padding: 10px 20px;
+
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+
+      > p {
+        font-weight: 600;
+        font-size: 14px;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+
+      > div {
+        > p {
+          font-size: 12px;
+          font-weight: 600;
+          margin-bottom: 8px;
+          opacity: 0.5;
+        }
+
+        > span {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+
+          > p {
+            font-size: 24px;
+            font-weight: 800;
+
+            // @media (max-width: $md4) {
+            //   font-size: 20px;
+            // }
+            // @media (max-width: $md7) {
+            //   font-size: 24px;
+            // }
+          }
+
+          .Button {
+            width: 100px;
+            height: 30px;
+
+            color: $lightDarkColor;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            // @media (max-width: $md4) {
+            //   width: 80px;
+            //   height: 25px;
+            //   font-size: 11px;
+            // }
+            // @media (max-width: $md7) {
+            //   width: 100px;
+            //   height: 30px;
+            //   font-size: 14px;
+            // }
+          }
+        }
+      }
+    }
+  }
+
+  position: relative;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    background: transparent;
+    transition: background 0.3s;
+
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}

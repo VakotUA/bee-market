@@ -1,16 +1,18 @@
-import style from './style.module.scss'
-import { Container } from '../UI/Container'
-import { Button } from '../UI/Button'
-import { Primary } from '../UI/PrimaryText'
-import Image from 'next/image'
-import Link from 'next/link'
 import classNames from 'classnames'
 
-import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+
+import { UI } from '../UI'
+const { Container, Button, Primary } = UI
+
+import style from './style.module.scss'
+
+import { useEffect, useState } from 'react'
 
 import SliderTransition from '../../assets/images/slider_paint_transition.png'
-
 import PaintStrokes from '../../public/sliderImages/paint_strokes.png'
+
 const sliderImages = [
   '/sliderImages/1.png',
   '/sliderImages/background_1.png',
@@ -53,8 +55,6 @@ export default function Slider() {
         />
       </div>
 
-      {/* TODO: Particles */}
-
       <Container className={style.Content}>
         <div className={style.Text}>
           <div className={style.Background}>
@@ -64,6 +64,7 @@ export default function Slider() {
               width={725}
               height={334}
               alt="paint_strokes"
+              priority
             />
           </div>
 

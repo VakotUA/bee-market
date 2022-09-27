@@ -6,13 +6,13 @@
     display: flex;
     gap: 2px;
 
-    .Block:nth-child(1) {
+    .Block.Large {
       display: block;
       @media (max-width: $md5) {
         display: none;
       }
     }
-    .Block:nth-child(2) {
+    .Block.Small {
       display: block;
       @media (max-width: $md4) {
         display: none;

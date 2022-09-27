@@ -1,98 +1,95 @@
 import style from './style.module.scss'
-import { Container } from '../UI/Container'
-import { Primary } from '../UI/PrimaryText'
-import Link from 'next/link'
 
 import MOCImage from '../../assets/images/moc/moc_category.png'
+
+import { UI } from '../UI'
+const { Container, Primary, Card } = UI
+const { CategoryCard } = Card
+
 const config = [
   {
     id: 1,
-    lable: 'test moc category',
+    name: 'test moc category',
     image: MOCImage.src,
     link: '',
   },
   {
     id: 2,
-    lable: 'test moc category',
+    name: 'test moc category',
     image: MOCImage.src,
     link: '',
   },
   {
     id: 3,
-    lable: 'test moc category',
+    name: 'test moc category',
     image: MOCImage.src,
     link: '',
   },
   {
     id: 4,
-    lable: 'test moc category',
+    name: 'test moc category',
     image: MOCImage.src,
     link: '',
   },
   {
     id: 5,
-    lable: 'test moc category',
-    image: MOCImage.src,
+    name: 'test moc category',
     link: '',
   },
   {
     id: 6,
-    lable: 'test moc category',
+    name: 'test moc category',
     image: MOCImage.src,
     link: '',
   },
   {
     id: 7,
-    lable: 'test moc category',
-    image: MOCImage.src,
+    name: 'test moc category',
     link: '',
   },
   {
     id: 8,
-    lable: 'test moc category',
+    name: 'test moc category',
     image: MOCImage.src,
     link: '',
   },
   {
     id: 9,
-    lable: 'test moc category',
+    name: 'test moc category',
     image: MOCImage.src,
     link: '',
   },
   {
     id: 10,
-    lable: 'test moc category',
+    name: 'test moc category',
     image: MOCImage.src,
     link: '',
   },
   {
     id: 11,
-    lable: 'test moc category',
-    image: MOCImage.src,
+    name: 'test moc category',
     link: '',
   },
   {
     id: 12,
-    lable: 'test moc category',
+    name: 'test moc category',
     image: MOCImage.src,
     link: '',
   },
   {
     id: 13,
-    lable: 'test moc category',
-    image: null,
+    name: 'test moc category',
     link: '',
   },
   {
     id: 14,
-    lable: 'test moc category',
+    name: 'test moc category',
     image: MOCImage.src,
     link: '',
   },
   {
     id: 15,
-    lable: 'test moc category',
-    image: null,
+    name: 'test moc category',
     link: '123124',
   },
 ]
@@ -115,12 +112,8 @@ export default function Catalog() {
         <div className={style.List}>
           <ul>
             {config.map((item) => (
-              <li key={item.id} className={style.Card}>
-                <Link href={item.link}>
-                  <a style={{ backgroundImage: `url(${item.image})` }}>
-                    <p>{item.lable}</p>
-                  </a>
-                </Link>
+              <li key={item.id}>
+                <CategoryCard category={item} className={style.Card} />
               </li>
             ))}
           </ul>

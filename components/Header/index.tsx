@@ -2,11 +2,8 @@ import style from './style.module.scss'
 
 import Link from 'next/link'
 
-import { Container } from '../UI/Container'
-import { Button } from '../UI/Button'
-import { NavLink } from '../UI/NavLink'
-import { Primary } from '../UI/PrimaryText'
-import { BurgerMenu } from '../UI/BurgerMenu'
+import { UI } from '../UI'
+const { Container, BurgerMenu, Button, NavLink, Primary } = UI
 
 import { BsPersonFill } from 'react-icons/bs'
 import { IoMdSearch } from 'react-icons/io'
@@ -14,13 +11,13 @@ import { IoMdSearch } from 'react-icons/io'
 import BgImage from '../../assets/images/header_background.png'
 import Logo from '../../assets/images/logo_header.png'
 
-import Telegram from '../../assets/images/telegram.png'
-import Instagram from '../../assets/images/instagram.png'
-import Facebook from '../../assets/images/facebook.png'
-import HexagonSmall from '../../assets/images/hexagon_small.png'
-import HexagonCart from '../../assets/images/hexagon_cart.png'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import Facebook from '../../assets/images/facebook.png'
+import HexagonCart from '../../assets/images/hexagon_cart.png'
+import HexagonSmall from '../../assets/images/hexagon_small.png'
+import Instagram from '../../assets/images/instagram.png'
+import Telegram from '../../assets/images/telegram.png'
 import { useDebounce } from '../../modules/hooks/useDebounce'
 
 import classNames from 'classnames'

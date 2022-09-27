@@ -3,10 +3,11 @@ export interface IProduct {
   name: string
   image?: string
   price: number
-  count: number
+  count?: number
   description?: string
   reviews?: IReview[]
   discount?: number
+  link: string
 }
 
 export interface IReview {

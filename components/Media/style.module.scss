@@ -1,0 +1,89 @@
+@import '../../styles/variables.scss';
+
+.Media {
+  position: relative;
+  margin-top: 50px;
+
+  z-index: 1;
+
+  .Background {
+    position: absolute;
+    width: 1013px;
+    height: 1006px;
+    left: -210px;
+    bottom: -204px;
+    z-index: -1;
+
+    pointer-events: none;
+
+    @media (max-width: $md4) {
+      display: none;
+    }
+  }
+
+  .Content {
+    .Block {
+      z-index: 1;
+      border-radius: 10px;
+      background: #ffffff88;
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+
+      width: 100%;
+      max-width: 940px;
+
+      margin-left: auto;
+
+      padding: 50px 50px 50px 120px;
+      @media (max-width: $md4) {
+        padding: 30px;
+      }
+
+      color: $lightDarkColor;
+
+      h2 {
+        font-size: 36px;
+
+        margin-bottom: 50px;
+        @media (max-width: $md5) {
+          margin-bottom: 30px;
+        }
+      }
+
+      .Text {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        font-size: 15px;
+        font-weight: 500;
+      }
+    }
+
+    .Links {
+      margin-top: 85px;
+      @media (max-width: $md4) {
+        margin-top: 30px;
+      }
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @media (max-width: $md5) {
+        flex-direction: column-reverse;
+        justify-content: center;
+
+        gap: 2rem;
+      }
+
+      .Button {
+        width: 300px;
+        height: 50px;
+        font-size: 15px;
+        font-weight: 800;
+
+        color: $lightDarkColor;
+      }
+    }
+  }
+}

@@ -1,10 +1,12 @@
+import { Container } from '../Layout/Container'
 import { BurgerMenu } from './BurgerMenu'
-import { Container } from './Container'
 import { Button } from './Button'
+import { Card as CategoryCard } from './Cards/Category'
+import { Card as ProductCard } from './Cards/Product'
+import { DiscountMark } from './Discount'
 import { NavLink } from './NavLink'
 import { Primary } from './PrimaryText'
 import { Select } from './Select'
-import { DiscountMark } from './Discount'
 
 export const UI = {
   Container,
@@ -14,4 +16,8 @@ export const UI = {
   Primary,
   Select,
   DiscountMark,
+  Card: {
+    CategoryCard,
+    ProductCard,
+  },
 }

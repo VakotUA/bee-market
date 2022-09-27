@@ -1,5 +1,5 @@
-import style from './style.module.scss'
 import classNames from 'classnames'
+import style from './style.module.scss'
 
 export type Props = {
   value: number

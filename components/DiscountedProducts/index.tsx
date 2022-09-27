@@ -1,15 +1,20 @@
-import { Container } from '../UI/Container'
-import { Button } from '../UI/Button'
-import { DiscountMark } from '../UI/Discount'
-import { Select } from '../UI/Select'
-import style from './style.module.scss'
 import { useEffect, useState } from 'react'
+
 import classNames from 'classnames'
+import style from './style.module.scss'
+
 import Link from 'next/link'
 
-import { BiChevronUp, BiChevronDown } from 'react-icons/bi'
+import { IProduct } from '../../modules/models/Product'
+
+import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
 
 import MOCImage from '../../assets/images/moc/moc_product.png'
+
+import { UI } from '../UI'
+const { Container, Card, Button, Select } = UI
+const { ProductCard } = Card
+
 const moc_categories = [
   {
     id: 1,
@@ -31,21 +36,21 @@ const moc_categories = [
 const moc_products = [
   {
     id: '1111111111',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
+    name: 'Диск для тріммера',
     link: '/123',
     price: 150,
     discount: 1,
   },
   {
     id: '2222222222',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
+    name: 'Диск для тріммера Gartner 255x25,4 мм 40',
     link: '/123',
     price: 250,
     discount: 5,
   },
   {
     id: '33333333333',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
+    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
     image: MOCImage.src,
     link: '/123',
     price: 350,
@@ -53,7 +58,7 @@ const moc_products = [
   },
   {
     id: '44444444444',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
+    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
     image: MOCImage.src,
     link: '/123',
     price: 550,
@@ -61,7 +66,7 @@ const moc_products = [
   },
   {
     id: '55555555555',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
+    name: '',
     image: MOCImage.src,
     link: '/123',
     price: 450,
@@ -69,61 +74,54 @@ const moc_products = [
   },
   {
     id: '66666666666',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
+    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
     link: '/123',
     price: 950,
     discount: 4,
   },
   {
     id: '77777777777',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
+    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
     link: '/123',
     price: 750,
     discount: 9,
   },
   {
     id: '888888888888',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
+    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
     image: MOCImage.src,
     link: '/123',
     price: 850,
-    discount: 0,
+    discount: 15,
   },
   {
     id: '999999999999',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
+    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців',
     link: '/123',
     price: 650,
     discount: 7,
   },
   {
     id: '000000000000',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448) ',
+    name: 'Диск для тріммера Gartner 255x25,4',
     image: MOCImage.src,
     link: '/123',
     price: 50,
     discount: 8,
   },
 ]
-interface IProduct {
-  id: string | number
-  name: string
-  image?: string
-  link: string
-  price: number
-  discount: number | 0
-}
 
 export default function Discount() {
   const defaultData = moc_products
-  const [data, setData] = useState<IProduct[]>(defaultData)
+  const [filteredData, setFilteredData] = useState<IProduct[]>(defaultData)
+  const [sortedData, setSortedData] = useState<IProduct[]>(filteredData)
 
   // filter [0] = filter by all categories
   // filter [category_id] = filter by specific category
   const [filter, setFilter] = useState(0)
 
   // sorting {
-  // order: [Ціна, кількість, популярність...],
+  // order: [Ціна, Назва, Знижка...],
   // direction: [за зростанням, за спаданням]
   // }
   const [sorting, setSorting] = useState<{
@@ -131,19 +129,19 @@ export default function Discount() {
     direction: boolean
   }>({ order: 'name', direction: true })
 
-  // useEffect(() => {}, [defaultData, setData, filter])
+  // useEffect(() => {}, [defaultData, setFilteredData, filter])
 
   useEffect(() => {
-    setData([
+    setSortedData([
       ...(sorting.direction
-        ? data.sort(
+        ? filteredData.sort(
             (a, b) => (a[sorting.order] as any) - (b[sorting.order] as any)
           )
-        : data.sort(
+        : filteredData.sort(
             (b, a) => (a[sorting.order] as any) - (b[sorting.order] as any)
           )),
     ])
-  }, [data, setData, sorting])
+  }, [filteredData, setSortedData, sorting])
 
   return (
     <section className={style.Discount}>
@@ -217,40 +215,9 @@ export default function Discount() {
 
         <div className={style.List}>
           <ul>
-            {data.map((item) => (
-              <li key={item.id} className={style.Card}>
-                <Link href={item.link}>
-                  <a>
-                    <div
-                      className={style.Image}
-                      style={{ backgroundImage: `url(${item.image})` }}
-                    >
-                      <DiscountMark
-                        value={item.discount}
-                        className={style.DiscountMark}
-                      />
-                    </div>
-
-                    <div className={style.Description}>
-                      <p>{item.name}</p>
-                      <div>
-                        <p>{item.id}</p>
-                        <span>
-                          <p>{item.price}грн</p>
-                          <Button
-                            className={style.Button}
-                            onClick={(e) => {
-                              e.preventDefault()
-                              // TODO: some logic
-                            }}
-                          >
-                            В кошик
-                          </Button>
-                        </span>
-                      </div>
-                    </div>
-                  </a>
-                </Link>
+            {sortedData.map((item) => (
+              <li key={item.id}>
+                <ProductCard product={item} className={style.Card} />
               </li>
             ))}
           </ul>
