@@ -108,12 +108,14 @@ export default function Reviews() {
                   <div className={style.ImageBlock}>
                     <Hex width={160} height={160} className={style.Hex} />
                     <div className={style.Image}>
-                      <Image
-                        src={user?.image || ''}
-                        alt="user"
-                        layout="fill"
-                        objectFit="cover"
-                      />
+                      {user?.image && (
+                        <Image
+                          src={user?.image}
+                          alt="user"
+                          layout="fill"
+                          objectFit="cover"
+                        />
+                      )}
                     </div>
                   </div>
                   <div className={style.Message}>
