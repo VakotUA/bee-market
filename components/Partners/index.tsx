@@ -1,6 +1,6 @@
 import { Container } from '../Layout/Container'
 import style from './style.module.scss'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { LongArrow } from '../../assets/svgs/longArrows'
 import Image from 'next/image'
 import { Primary } from '../UI/PrimaryText'
@@ -24,14 +24,14 @@ export default function Partners() {
   const ref = useRef<HTMLDivElement>(null)
   const [offset, setOffset] = useState<number>(0)
 
-  const changeOffset = (a: number) => {
+  const changeOffset = useCallback((a: number) => {
     const min = 0
-    const max = data.length * 210 - ref.current?.offsetWidth! - 10
+    const max = data.length * 210 - (ref.current?.offsetWidth || 0) - 10
 
     if (a > max && a - max < 210) setOffset(max)
     else if (a < 0 && min - a < 210) setOffset(min)
     else setOffset(a > max ? min : a < min ? max : a)
-  }
+  }, [])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -65,7 +65,7 @@ export default function Partners() {
               {data.map((item, index) => (
                 <a key={index} className={style.Item} href={item.link}>
                   {item.image ? (
-                    <Image src={item.image} layout="fill" />
+                    <Image src={item.image} alt="partner" layout="fill" />
                   ) : (
                     <Primary className={style.Primary}>Partner</Primary>
                   )}

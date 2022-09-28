@@ -1,6 +1,6 @@
 import style from './style.module.scss'
 import { Container } from '../Layout/Container'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Hex from '../../assets/svgs/hex'
 import classNames from 'classnames'
 import { IUser } from '../../modules/models/User'
@@ -68,9 +68,12 @@ export default function Reviews() {
   const [user, setUser] = useState<IUser>()
 
   const [active, setActive] = useState<number>(0)
-  const toggleActive = (a: number) => {
-    setActive(a > data.length - 1 ? 0 : a < 0 ? data.length - 1 : a)
-  }
+  const toggleActive = useCallback(
+    (a: number) => {
+      setActive(a > data.length - 1 ? 0 : a < 0 ? data.length - 1 : a)
+    },
+    [data.length]
+  )
 
   useEffect(() => {
     // select next review after [message.length * 200ms] delay
@@ -81,7 +84,7 @@ export default function Reviews() {
     }, data[active].message.length * 200)
 
     return () => clearTimeout(timer)
-  }, [active, toggleActive])
+  }, [data, active, toggleActive])
 
   useEffect(() => {
     // imitation of API request getUserByIdQuery
