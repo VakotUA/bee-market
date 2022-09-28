@@ -9,11 +9,11 @@ export type Props = {
   style?: React.CSSProperties
 }
 
-export function Button(props: Props) {
+export function Button({ type = 'button', ...props }: Props) {
   return (
     <button
       className={classNames(style.Button, props.className)}
-      type={props.type}
+      type={type}
       onClick={props.onClick}
       style={props.style}
     >

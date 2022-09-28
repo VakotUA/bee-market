@@ -1,3 +1,126 @@
+@import '../../styles/variables.scss';
+
 .Form {
   margin-top: 50px;
+
+  .Background {
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .Body {
+    width: 100%;
+    height: 400px;
+
+    overflow: hidden;
+
+    border-radius: 6px;
+    z-index: 1;
+
+    padding: 70px 150px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .Title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      color: $lightColor;
+
+      h2 {
+        font-size: 36px;
+        font-weight: 900;
+        margin-bottom: 0.25rem;
+      }
+
+      p {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 3rem;
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.formGroup {
+  position: relative;
+  width: 100%;
+  margin: 24px 0;
+}
+
+.formGroup > * {
+  cursor: pointer;
+  color: white;
+}
+
+.formGroup > input {
+  width: 100%;
+  height: 3rem;
+  border-bottom: 2px solid #ffffff88;
+  background-color: transparent;
+  padding: 0 10px;
+  font-size: 24px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.formGroup > label {
+  color: #ffffff88;
+  position: absolute;
+  left: 10px;
+  bottom: 1rem;
+  pointer-events: none;
+  transform-origin: 0 0;
+  transition: 0.3s;
+  left: 50%;
+  transform: scale(1) translateX(-50%);
+  font-size: 22px;
+}
+
+.formGroup > textarea ~ label {
+  bottom: 1.25rem;
+}
+
+.formGroup > input::placeholder {
+  color: transparent;
+}
+
+.formGroup > input:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.formGroup > input:hover,
+.formGroup > input:hover + label {
+  border-color: $primaryColor1;
+  color: $lightColor;
+}
+.formGroup > input:focus {
+  border-color: $primaryColor3;
+}
+
+.formGroup > input:focus + label,
+.formGroup > input:not(:placeholder-shown) + label {
+  transform: scale(0.8) translateX(-50%);
+  bottom: 100%;
+  left: 50%;
+}
+
+.Button {
+  width: 300px;
+  height: 50px;
+  font-size: 15px;
+  font-weight: 800;
+
+  margin-top: 10px;
+
+  color: $lightDarkColor;
 }
