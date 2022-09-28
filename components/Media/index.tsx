@@ -17,7 +17,14 @@ export default function Media() {
       <Container className={style.Content}>
         <div className={style.Block}>
           <div className={style.Background}>
-            <Image src={BgImage} alt="background" width={1013} height={1006} />
+            <Image
+              src={BgImage}
+              alt="background"
+              width={1006}
+              height={806}
+              layout="fixed"
+              quality={100}
+            />
           </div>
 
           <h2>Вітаю дорогий відвідувач</h2>
