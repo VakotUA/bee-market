@@ -36,7 +36,7 @@ export default function Partners() {
   useEffect(() => {
     const timer = setTimeout(() => {
       changeOffset(offset + 210)
-    }, 3000)
+    }, 5000)
 
     return () => clearTimeout(timer)
   }, [offset, changeOffset])

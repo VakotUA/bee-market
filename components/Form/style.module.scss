@@ -10,7 +10,7 @@
 
   .Body {
     width: 100%;
-    height: 400px;
+    min-height: 300px;
 
     overflow: hidden;
 
@@ -18,6 +18,12 @@
     z-index: 1;
 
     padding: 70px 150px;
+    @media (max-width: $md3) {
+      padding: 50px;
+    }
+    @media (max-width: $md5) {
+      padding: 20px;
+    }
 
     background-position: center;
     background-repeat: no-repeat;
@@ -54,6 +60,9 @@
   position: relative;
   width: 100%;
   margin: 24px 0;
+  @media (max-width: $md4) {
+    margin: 18px 0;
+  }
 }
 
 .formGroup > * {
@@ -67,22 +76,40 @@
   border-bottom: 2px solid #ffffff88;
   background-color: transparent;
   padding: 0 10px;
-  font-size: 24px;
   position: relative;
   transition: 0.3s;
+
+  font-size: 22px;
+  @media (max-width: $md4) {
+    font-size: 18px;
+    height: 2rem;
+  }
+  @media (max-width: $md5) {
+    font-size: 14px;
+    height: 1.5rem;
+  }
 }
 
 .formGroup > label {
   color: #ffffff88;
   position: absolute;
   left: 10px;
-  bottom: 1rem;
   pointer-events: none;
   transform-origin: 0 0;
   transition: 0.3s;
   left: 50%;
   transform: scale(1) translateX(-50%);
+
+  bottom: 1rem;
+
   font-size: 22px;
+  @media (max-width: $md4) {
+    font-size: 18px;
+    bottom: 0.5rem;
+  }
+  @media (max-width: $md5) {
+    font-size: 14px;
+  }
 }
 
 .formGroup > textarea ~ label {

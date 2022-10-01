@@ -12,16 +12,16 @@
   }
 
   z-index: 100;
-}
-
-.Content {
-  position: relative;
-  width: 100%;
 
   .Background {
     z-index: -1;
     pointer-events: none;
   }
+}
+
+.Content {
+  position: relative;
+  width: 100%;
 
   .SubHeader:nth-child(1) {
     width: 100%;

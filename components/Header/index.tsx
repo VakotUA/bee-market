@@ -8,7 +8,7 @@ const { Container, BurgerMenu, Button, NavLink, Primary } = UI
 import { BsPersonFill } from 'react-icons/bs'
 import { IoMdSearch } from 'react-icons/io'
 
-import BgImage from '../../assets/images/header_background.png'
+import Background from '../../assets/images/header_background.png'
 import Logo from '../../assets/images/logo_header.png'
 
 import Image from 'next/image'
@@ -26,6 +26,8 @@ import { useAppDispatch } from '../../modules/store/hooks'
 import { searchSlice } from '../../modules/store/reducers/searchSlice'
 
 import { useSession } from 'next-auth/react'
+
+import { MEDIA_LINKS } from '../../lib/constants'
 
 const count = 0 // temporary products in cart count
 
@@ -71,7 +73,7 @@ export default function Header() {
       </div>
 
       <Image
-        src={BgImage}
+        src={Background}
         alt="background"
         className={style.Background}
         layout="fill"
@@ -126,13 +128,25 @@ export default function Header() {
                 <div className={style.Particle}>
                   <Image src={HexagonSmall} alt="hex" />
                 </div>
-                <a href="" target="_blank">
+                <a
+                  href={MEDIA_LINKS.TELEGRAM_LINK}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <Image src={Telegram} alt="telegram" />
                 </a>
-                <a href="" target="_blank">
+                <a
+                  href={MEDIA_LINKS.INSTAGRAM_LINK}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <Image src={Instagram} alt="instagram" />
                 </a>
-                <a href="" target="_blank">
+                <a
+                  href={MEDIA_LINKS.FACEBOOK_LINK}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <Image src={Facebook} alt="facebook" />
                 </a>
               </div>

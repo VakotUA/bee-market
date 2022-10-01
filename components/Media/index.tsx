@@ -11,6 +11,8 @@ import Telegram from '../../assets/images/telegram_outlined.png'
 
 import BgImage from '../../assets/images/media_background.png'
 
+import { MEDIA_LINKS } from '../../lib/constants'
+
 export default function Media() {
   return (
     <section className={style.Media}>
@@ -56,21 +58,29 @@ export default function Media() {
 
           <div className={style.Links}>
             <div>
-              <Link href="/">
-                <a>
-                  <Image src={Telegram} alt="telegram" />
-                </a>
-              </Link>
-              <Link href="/">
-                <a>
-                  <Image src={Facebook} alt="facebook" />
-                </a>
-              </Link>
-              <Link href="/">
-                <a>
-                  <Image src={Instagram} alt="instagram" />
-                </a>
-              </Link>
+              <a
+                href={MEDIA_LINKS.TELEGRAM_LINK}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image src={Telegram} alt="telegram" />
+              </a>
+
+              <a
+                href={MEDIA_LINKS.INSTAGRAM_LINK}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image src={Instagram} alt="instagram" />
+              </a>
+
+              <a
+                href={MEDIA_LINKS.FACEBOOK_LINK}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image src={Facebook} alt="facebook" />
+              </a>
             </div>
 
             <Link href="/blog">
