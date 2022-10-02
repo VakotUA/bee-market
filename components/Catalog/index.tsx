@@ -94,20 +94,26 @@ const config = [
   },
 ]
 
-export default function Catalog() {
+export default function Catalog({
+  hideTitle = false,
+}: {
+  hideTitle?: boolean
+}) {
   return (
     <section className={style.Catalog}>
       <Container className={style.Content}>
-        <div className={style.Title}>
-          <h2>Наш каталог</h2>
-          <p>
-            В інтернет магазині{' '}
-            <span className={style.Logo}>
-              <Primary>BEE</Primary> MARKET
-            </span>{' '}
-            ви можете знайти всі необхідні інструменти і товари.
-          </p>
-        </div>
+        {hideTitle || (
+          <div className={style.Title}>
+            <h2>Наш каталог</h2>
+            <p>
+              В інтернет магазині{' '}
+              <span className={style.Logo}>
+                <Primary>BEE</Primary> MARKET
+              </span>{' '}
+              ви можете знайти всі необхідні інструменти і товари.
+            </p>
+          </div>
+        )}
 
         <div className={style.List}>
           <ul>

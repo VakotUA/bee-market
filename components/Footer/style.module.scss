@@ -15,7 +15,7 @@
 
   &:nth-child(1) {
     width: 100%;
-    min-height: 700px;
+    min-height: 500px;
 
     overflow: hidden;
 
@@ -25,7 +25,7 @@
       > div:nth-child(1) {
         display: flex;
         align-items: center;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
       }
 
       > div:nth-child(2) {
@@ -33,18 +33,8 @@
         justify-content: space-between;
         flex-wrap: wrap;
 
-        @media (max-width: $md6) {
-          flex-direction: column;
-        }
-
         > div {
           width: 270px;
-          margin-bottom: 30px;
-
-          &:nth-child(2),
-          &:nth-child(3) {
-            margin-bottom: 0;
-          }
 
           display: flex;
           flex-direction: column;
@@ -114,6 +104,8 @@
   flex-direction: column;
   gap: 1.15rem;
 
+  margin-bottom: 30px;
+
   font-size: 15px;
   font-weight: 500;
 
@@ -153,7 +145,7 @@
     cursor: pointer;
 
     margin-bottom: 8px;
-    @media (max-width: $md5) {
+    @media (max-width: 1123px) {
       margin-bottom: 15px;
       font-size: 15px;
     }
@@ -202,6 +194,8 @@
   letter-spacing: 0.125em;
   line-height: 1rem;
 
+  margin-bottom: 30px;
+
   > span {
     display: flex;
     flex-direction: column;
@@ -214,5 +208,26 @@
     font-size: 11px;
     font-weight: 800;
     color: $darkColor;
+  }
+}
+
+.Desktop {
+  display: block;
+  @media (max-width: 1123px) {
+    display: none;
+  }
+}
+.Mobile {
+  display: none;
+  @media (max-width: 1123px) {
+    display: block;
+  }
+
+  > div:nth-child(2) {
+    > div:nth-child(1) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   }
 }

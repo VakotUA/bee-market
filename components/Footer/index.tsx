@@ -152,132 +152,63 @@ export default function Footer() {
           objectPosition="center top"
         />
 
-        <Container className={style.Container}>
+        <Container className={classNames(style.Container, style.Desktop)}>
           <div>
-            <Link href="/">
-              <a className={style.Logo}>
-                <div className={style.Image}>
-                  <Image
-                    src={Logo}
-                    alt="logo"
-                    width={39}
-                    height={54}
-                    layout="fixed"
-                  />
-                </div>
-                <p>
-                  <Primary className={style.Bee}>BEE</Primary> MARKET
-                </p>
-              </a>
-            </Link>
-
-            <div className={style.Media}>
-              <a
-                href={MEDIA_LINKS.TELEGRAM_LINK}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Image src={Telegram} alt="telegram" />
-              </a>
-
-              <a
-                href={MEDIA_LINKS.INSTAGRAM_LINK}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Image src={Instagram} alt="instagram" />
-              </a>
-
-              <a
-                href={MEDIA_LINKS.FACEBOOK_LINK}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Image src={Facebook} alt="facebook" />
-              </a>
-            </div>
+            <LogoAndMedia />
           </div>
 
           <div>
             <div>
-              <ul className={style.Navigation}>
-                <li>
-                  <Link href="">
-                    <a>Партнерам</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="">
-                    <a>Оплата та Доставка</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="">
-                    <a>Сертифікати</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="">
-                    <a>Гарантії</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="">
-                    <a>Новини</a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="">
-                    <a>Контакти</a>
-                  </Link>
-                </li>
-              </ul>
+              <Navigation />
             </div>
 
-            <div>
-              <CategoryAccordeon
-                data={data.slice(0, 6)}
-                active={active}
-                setActive={setActive}
-              />
-            </div>
-            <div>
-              <CategoryAccordeon
-                data={data.slice(6, 12)}
-                active={active}
-                setActive={setActive}
-              />
-            </div>
-            <div>
-              <CategoryAccordeon
-                data={data.slice(12, 18)}
-                active={active}
-                setActive={setActive}
-              />
-            </div>
-
-            <div>
-              <div className={style.Contacts}>
-                <a>
-                  вул. Малинська 1, індекс 10002,
-                  <br />
-                  Житомир, Україна
-                </a>
-
-                <span>
-                  <a href="tel:+38(063)5028874">+38 (063) 502 88 74</a>
-
-                  <a href="tel:+38(068)6293173">+38 (068) 629 31 73</a>
-                </span>
-
-                <a href="mailto:info@bee.market">info@bee.market</a>
-
-                <a href="tel:+38(063)5028874">+38 (063) 502 88 74</a>
-
-                <a href="tel:+38(063)5028874">+38 (063) 502 88 74</a>
-
-                <Button className={style.Button}>ЗАМОВИТИ ДЗВІНОК</Button>
+            {/* Accordeon parts */}
+            <>
+              <div className={style.AccordeonPart}>
+                <CategoryAccordeon
+                  data={data.slice(0, 6)}
+                  active={active}
+                  setActive={setActive}
+                />
               </div>
+              <div className={style.AccordeonPart}>
+                <CategoryAccordeon
+                  data={data.slice(6, 12)}
+                  active={active}
+                  setActive={setActive}
+                />
+              </div>
+              <div className={style.AccordeonPart}>
+                <CategoryAccordeon
+                  data={data.slice(12, 18)}
+                  active={active}
+                  setActive={setActive}
+                />
+              </div>
+            </>
+
+            <div>
+              <Contacts />
+            </div>
+          </div>
+        </Container>
+
+        <Container className={classNames(style.Container, style.Mobile)}>
+          <div>
+            <LogoAndMedia />
+          </div>
+
+          <div>
+            <div>
+              <Navigation />
+              <Contacts />
+            </div>
+            <div className={style.Accordeon}>
+              <CategoryAccordeon
+                data={data}
+                active={active}
+                setActive={setActive}
+              />
             </div>
           </div>
         </Container>
@@ -291,6 +222,104 @@ export default function Footer() {
         </Container>
       </div>
     </footer>
+  )
+}
+
+export function Navigation() {
+  return (
+    <ul className={style.Navigation}>
+      <li>
+        <Link href="">
+          <a>Партнерам</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="">
+          <a>Оплата та Доставка</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="">
+          <a>Сертифікати</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="">
+          <a>Гарантії</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="">
+          <a>Новини</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="">
+          <a>Контакти</a>
+        </Link>
+      </li>
+    </ul>
+  )
+}
+export function Contacts() {
+  return (
+    <div className={style.Contacts}>
+      <a>
+        вул. Малинська 1, індекс 10002,
+        <br />
+        Житомир, Україна
+      </a>
+
+      <span>
+        <a href="tel:+38(063)5028874">+38 (063) 502 88 74</a>
+
+        <a href="tel:+38(068)6293173">+38 (068) 629 31 73</a>
+      </span>
+
+      <a href="mailto:info@bee.market">info@bee.market</a>
+
+      <a href="tel:+38(063)5028874">+38 (063) 502 88 74</a>
+
+      <a href="tel:+38(063)5028874">+38 (063) 502 88 74</a>
+
+      <Button className={style.Button}>ЗАМОВИТИ ДЗВІНОК</Button>
+    </div>
+  )
+}
+export function LogoAndMedia() {
+  return (
+    <>
+      <Link href="/">
+        <a className={style.Logo}>
+          <div className={style.Image}>
+            <Image
+              src={Logo}
+              alt="logo"
+              width={39}
+              height={54}
+              layout="fixed"
+            />
+          </div>
+          <p>
+            <Primary className={style.Bee}>BEE</Primary> MARKET
+          </p>
+        </a>
+      </Link>
+
+      <div className={style.Media}>
+        <a href={MEDIA_LINKS.TELEGRAM_LINK} target="_blank" rel="noreferrer">
+          <Image src={Telegram} alt="telegram" />
+        </a>
+
+        <a href={MEDIA_LINKS.INSTAGRAM_LINK} target="_blank" rel="noreferrer">
+          <Image src={Instagram} alt="instagram" />
+        </a>
+
+        <a href={MEDIA_LINKS.FACEBOOK_LINK} target="_blank" rel="noreferrer">
+          <Image src={Facebook} alt="facebook" />
+        </a>
+      </div>
+    </>
   )
 }
 
