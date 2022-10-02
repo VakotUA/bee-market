@@ -54,19 +54,19 @@ export default function Header() {
         </div>
 
         <nav className={style.Navigation}>
-          <NavLink href="" onClick={() => setIsVisible(false)}>
+          <NavLink onClick={() => setIsVisible(false)} href="/catalog">
             Каталог
           </NavLink>
-          <NavLink href="" onClick={() => setIsVisible(false)}>
+          <NavLink onClick={() => setIsVisible(false)} href="/partners">
             Партнерам
           </NavLink>
-          <NavLink href="" onClick={() => setIsVisible(false)}>
+          <NavLink onClick={() => setIsVisible(false)} href="/news">
             Новини
           </NavLink>
-          <NavLink href="" onClick={() => setIsVisible(false)}>
+          <NavLink onClick={() => setIsVisible(false)} href="/delivery">
             Оплата та Доставка
           </NavLink>
-          <NavLink href="" onClick={() => setIsVisible(false)}>
+          <NavLink onClick={() => setIsVisible(false)} href="/contacts">
             Контакти
           </NavLink>
         </nav>
