@@ -27,8 +27,8 @@ export function Filters({ filters, setFilters }: Props) {
             className={classNames(style.Filter, { [style.Active]: isActive })}
           >
             <div>
-              {filters.map((filter) => (
-                <div>
+              {filters.map((filter, index) => (
+                <div key={index}>
                   <div className={style.Title}>{filter.title}</div>
                   <ul className={style.Values}>
                     {filter.values.map((value, index) => (
