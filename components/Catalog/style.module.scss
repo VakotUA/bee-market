@@ -1,8 +1,6 @@
 @import '../../styles/variables.scss';
 
 .Catalog {
-  margin-top: 32px;
-
   .Content {
     .Title {
       width: 100%;
@@ -11,11 +9,12 @@
       align-items: center;
       flex-direction: column;
 
+      margin-top: 32px;
+      margin-bottom: 30px;
+
       h2 {
         font-size: 48px;
         font-weight: 900;
-
-        margin-bottom: 20px;
       }
 
       p {
@@ -29,8 +28,8 @@
     }
 
     .List {
-      margin-top: 50px;
       overflow: hidden;
+      margin-top: 20px;
 
       ul {
         display: grid;
@@ -52,6 +51,7 @@
 
         > li {
           margin: 3px;
+          z-index: 1;
         }
       }
     }

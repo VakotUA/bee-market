@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import NotFound from '../../../../assets/images/image_not_found.png'
-
 import { ICategory } from '../../../../modules/models/Category'
 
 export type Props = {
@@ -20,7 +19,7 @@ export function Card(props: Props) {
       className={classNames(style.Card, props.className)}
       style={props.style}
     >
-      <Link href={props.category.link}>
+      <Link href={'/catalog/' + props.category.link}>
         <a>
           <Image
             src={props.category.image || NotFound.src}

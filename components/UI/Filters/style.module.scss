@@ -1,0 +1,196 @@
+@import '../../../styles/variables.scss';
+
+.Filters {
+  margin-top: 32px;
+
+  .Content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .Wrapper {
+    width: 100%;
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.1));
+
+    .Filter {
+      width: 100%;
+      min-height: 16px;
+      border-radius: 8px;
+
+      overflow: hidden;
+
+      transition: background-color 0.5s, height 0.5s ease-in-out;
+      background-color: $primaryColor1;
+      &.Active {
+        background-color: $lightColor;
+      }
+
+      > div:nth-child(1) {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        padding-bottom: 50px;
+
+        > div {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          padding: 20px 50px;
+
+          &:last-of-type {
+            border: none;
+          }
+        }
+
+        transition: margin-bottom 0.5s cubic-bezier(1, 0, 1, 1),
+          max-height 0s 0.5s, visibility 0.5s;
+
+        margin-bottom: -2000px;
+        max-height: 0;
+
+        visibility: hidden;
+      }
+      &.Active > div {
+        transition: margin-bottom 0.5s cubic-bezier(0, 0, 0, 1);
+
+        margin-bottom: 0;
+        max-height: 1000000px;
+        visibility: visible;
+      }
+
+      .Title {
+        font-size: 24px;
+        color: $lightDarkColor;
+      }
+      .Values {
+        display: flex;
+        gap: 10px;
+        color: $lightenDarkColor;
+        > .Active {
+          color: $lightDarkColor;
+        }
+      }
+
+      position: relative;
+      > .Button {
+        cursor: pointer;
+        color: $lightDarkColor;
+        &:hover {
+          color: $darkColor;
+        }
+
+        width: 100%;
+        height: 50px;
+
+        position: absolute;
+        bottom: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 7px;
+
+        transition: background-color 0.5s, visibility 0.5s, color 0.3s !important;
+
+        box-shadow: 0px -1px 0 rgba(0, 0, 0, 0.25);
+        background-color: $primaryColor1;
+
+        visibility: hidden;
+
+        transition: 0.5s;
+      }
+      &.Active > .Button {
+        visibility: visible;
+
+        background-color: $lightenDarkColor;
+      }
+    }
+
+    > .Button {
+      display: flex;
+      justify-content: center;
+      position: relative;
+
+      .CornerLeftTop,
+      .CornerRightTop {
+        width: 15px;
+        height: 15px;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+
+        &::before {
+          content: '';
+          display: block;
+          width: 200%;
+          height: 200%;
+          position: absolute;
+          border-radius: 50%;
+
+          transition: box-shadow 0.5s;
+        }
+      }
+
+      .CornerLeftTop::before {
+        top: 0;
+        right: 0;
+        box-shadow: 8px -8px 0 0 $primaryColor1;
+      }
+      &.Active .CornerLeftTop::before {
+        box-shadow: 8px -8px 0 0 $lightenDarkColor;
+      }
+      .CornerRightTop::before {
+        top: 0;
+        left: 0;
+        box-shadow: -8px -8px 0 0 $primaryColor1;
+      }
+      &.Active .CornerRightTop::before {
+        box-shadow: -8px -8px 0 0 $lightenDarkColor;
+      }
+
+      .Body {
+        border-radius: 0 0 16px 16px;
+        padding-inline: 10px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        cursor: pointer;
+
+        line-height: 1;
+        font-weight: 700;
+        color: $lightDarkColor;
+
+        transition: background-color 0.5s;
+
+        background-color: $primaryColor1;
+
+        &:hover {
+          color: $darkColor;
+        }
+      }
+
+      &.Active .Body {
+        color: $darkColor;
+        background-color: $lightenDarkColor;
+      }
+
+      .Plus {
+        display: block;
+      }
+      .Minus {
+        display: none;
+      }
+      &.Active {
+        .Plus {
+          display: none;
+        }
+        .Minus {
+          display: block;
+        }
+      }
+    }
+  }
+}
