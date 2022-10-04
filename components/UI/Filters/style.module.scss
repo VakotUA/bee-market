@@ -1,7 +1,7 @@
 @import '../../../styles/variables.scss';
 
 .Filters {
-  margin-top: 32px;
+  margin-top: 20px;
 
   .Content {
     display: flex;
@@ -65,10 +65,22 @@
       }
       .Values {
         display: flex;
-        gap: 10px;
+        gap: 20px;
         color: $lightenDarkColor;
-        > .Active {
-          color: $lightDarkColor;
+
+        > li {
+          position: relative;
+          margin-left: 21px;
+
+          > span {
+            position: absolute;
+            left: -21px;
+            top: 0;
+          }
+
+          &.Active {
+            color: $lightDarkColor;
+          }
         }
       }
 

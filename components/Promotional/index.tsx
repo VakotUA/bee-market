@@ -6,14 +6,12 @@ import style from './style.module.scss'
 import Link from 'next/link'
 
 import { IProduct } from '../../modules/models/Product'
-
-import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
+import Products from '../Products'
 
 import MOCImage from '../../assets/images/moc/moc_product.png'
 
-import { UI } from '../UI'
-const { Container, Card, Button, Select } = UI
-const { ProductCard } = Card
+import { Container } from '../Layout/Container'
+import { Button } from '../UI/Button'
 
 const moc_categories = [
   {
@@ -113,35 +111,13 @@ const moc_products = [
 
 export default function Discount() {
   const defaultData = moc_products
-  const [filteredData, setFilteredData] = useState<IProduct[]>(defaultData)
-  const [sortedData, setSortedData] = useState<IProduct[]>(filteredData)
+  const [data, setData] = useState<IProduct[]>(defaultData)
 
   // filter [0] = filter by all categories
   // filter [category_id] = filter by specific category
   const [filter, setFilter] = useState(0)
 
-  // sorting {
-  // order: [Ціна, Назва, Знижка...],
-  // direction: [за зростанням, за спаданням]
-  // }
-  const [sorting, setSorting] = useState<{
-    order: keyof IProduct
-    direction: boolean
-  }>({ order: 'name', direction: true })
-
   // useEffect(() => {}, [defaultData, setFilteredData, filter])
-
-  useEffect(() => {
-    setSortedData([
-      ...(sorting.direction
-        ? filteredData.sort(
-            (a, b) => (a[sorting.order] as any) - (b[sorting.order] as any)
-          )
-        : filteredData.sort(
-            (b, a) => (a[sorting.order] as any) - (b[sorting.order] as any)
-          )),
-    ])
-  }, [filteredData, setSortedData, sorting])
 
   return (
     <section className={style.Discount}>
@@ -175,53 +151,7 @@ export default function Discount() {
           </ul>
         </div>
 
-        <div className={style.Sorting}>
-          <div />
-          <div>
-            <p>Сортування:</p>
-
-            <Select
-              className={style.Select}
-              options={[
-                {
-                  value: 'name',
-                  lable: 'Назва',
-                },
-                {
-                  value: 'price',
-                  lable: 'Ціна',
-                },
-                {
-                  value: 'discount',
-                  lable: 'Знижка',
-                },
-              ]}
-              value={sorting.order}
-              onSelect={(newValue: keyof IProduct) =>
-                setSorting({ ...sorting, order: newValue })
-              }
-              hideOnSelect
-            />
-
-            <button
-              onClick={() =>
-                setSorting({ ...sorting, direction: !sorting.direction })
-              }
-            >
-              {sorting.direction ? <BiChevronUp /> : <BiChevronDown />}
-            </button>
-          </div>
-        </div>
-
-        <div className={style.List}>
-          <ul>
-            {sortedData.map((item) => (
-              <li key={item.id}>
-                <ProductCard product={item} className={style.Card} />
-              </li>
-            ))}
-          </ul>
-        </div>
+        <Products data={data} />
 
         <div className={style.Button}>
           <div />

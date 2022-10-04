@@ -11,7 +11,7 @@ const config = [
     id: 1,
     name: 'test moc category',
     image: MOCImage.src,
-    link: '',
+    link: 'test_category',
   },
   {
     id: 2,

@@ -1,1 +1,4 @@
-export const ROUTES = new Map([['/catalog', 'Каталог']])
+export const ROUTES = new Map([
+  ['', 'Головна'],
+  ['catalog', 'Каталог'],
+])

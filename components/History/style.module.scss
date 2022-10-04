@@ -1,3 +1,18 @@
+@import '../../styles/variables.scss';
+
 .History {
   margin-top: 50px;
+
+  div {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: $lightDarkColor;
+  }
+
+  .Chevron {
+    color: $primaryColor3;
+    font-size: 20px;
+  }
 }

@@ -90,51 +90,6 @@
       }
     }
 
-    .Sorting {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-
-      > div:nth-child(2) {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-
-        .Select {
-          width: 90px;
-          height: 26px;
-
-          > div:first-child {
-            padding: 4px 0 4px 16px;
-          }
-        }
-
-        button {
-          cursor: pointer;
-
-          background-color: transparent;
-          box-shadow: 0 2px 4px 0 transparent;
-          border-radius: 5px;
-
-          transition: background 0.3s, box-shadow 0.3s, color 0.3s;
-
-          font-size: 26px;
-          font-weight: 600;
-
-          background-color: $lightColor;
-          color: $lightDarkColor;
-          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-
-          width: 26px;
-          height: 26px;
-
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      }
-    }
-
     .List {
       margin-top: 20px;
       overflow: hidden;

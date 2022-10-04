@@ -2,6 +2,10 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import { Container } from '../../Layout/Container'
 import classNames from 'classnames'
 import style from './style.module.scss'
+import Image from 'next/image'
+
+import Image1 from '../../../assets/images/select_image_unselected.png'
+import Image2 from '../../../assets/images/select_image_selected.png'
 
 export interface IFilter {
   title: string
@@ -38,6 +42,14 @@ export function Filters({ filters, setFilters }: Props) {
                         })}
                         key={index}
                       >
+                        <span>
+                          <Image src={Image1} alt="unselecten" />
+                        </span>
+                        {value.selected && (
+                          <span>
+                            <Image src={Image2} alt="selected" />
+                          </span>
+                        )}
                         {value.value}
                       </li>
                     ))}

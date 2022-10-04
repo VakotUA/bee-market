@@ -1,5 +1,5 @@
 import Catalog from '../../components/Catalog'
-import Discount from '../../components/DiscountedProducts'
+import Discount from '../../components/Promotional'
 import History from '../../components/History'
 
 import ADSImage1 from '../../assets/images/ads_1.png'

@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Slider from '../components/Slider'
 import Catalog from '../components/Catalog'
 import ADS from '../components/ADS'
-import Discount from '../components/DiscountedProducts'
+import Discount from '../components/Promotional'
 import Media from '../components/Media'
 
 import ADSImage1 from '../assets/images/ads_1.png'
