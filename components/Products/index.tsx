@@ -5,10 +5,12 @@ import { Container } from '../Layout/Container'
 import { useState, useEffect } from 'react'
 import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
 import { Select } from '../UI/Select'
+import classNames from 'classnames'
 
 export type Props = {
   data?: IProduct[]
   sort?: boolean | false
+  className?: string
 }
 
 export default function Products(props: Props) {
@@ -47,7 +49,7 @@ export default function Products(props: Props) {
     )
 
   return (
-    <section className={style.Products}>
+    <section className={classNames(style.Products, props.className)}>
       <Container>
         {props.sort && (
           <div className={style.Sorting}>

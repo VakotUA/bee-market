@@ -17,11 +17,11 @@ export default function History() {
         <div>
           {paths.map((path, index) => (
             <React.Fragment key={index}>
-              <Link
-                href={paths.slice(0, paths.indexOf(path) + 1).join('/') || '/'}
-              >{`${ROUTES.get(path) || path}`}</Link>
+              <Link href={paths.slice(0, index + 1).join('/') || '/'}>{`${
+                ROUTES.get(path) || path
+              }`}</Link>
 
-              {paths.indexOf(path) < paths.length - 1 && (
+              {index < paths.length - 1 && (
                 <BiChevronRight className={style.Chevron} />
               )}
             </React.Fragment>
