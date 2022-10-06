@@ -7,7 +7,6 @@ export interface IProduct {
   description?: string
   reviews?: IReview[]
   discount?: number
-  link: string
 }
 
 export interface IReview {

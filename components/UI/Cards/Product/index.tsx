@@ -10,6 +10,7 @@ import Link from 'next/link'
 import NotFound from '../../../../assets/images/image_not_found.png'
 
 import { IProduct } from '../../../../modules/models/Product'
+import { ICategory } from '../../../../modules/models/Category'
 
 export type Props = {
   product: IProduct
@@ -18,12 +19,25 @@ export type Props = {
 }
 
 export function Card(props: Props) {
+  // const {data} = useGetCategoryByProductId(props.product.id)
+  const category = 'paint_materials' // .link
+  const sub_category = 'paints' // .link
+
   return (
     <div
       className={classNames(style.Card, props.className)}
       style={props.style}
     >
-      <Link href={props.product.link}>
+      <Link
+        href={{
+          pathname: '/catalog/[category]/[sub_category]/[product]',
+          query: {
+            category: category,
+            sub_category: sub_category,
+            product: props.product.id,
+          },
+        }}
+      >
         <a>
           <div className={style.Image}>
             <Image

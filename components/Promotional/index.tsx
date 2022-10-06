@@ -151,7 +151,7 @@ export default function Discount() {
           </ul>
         </div>
 
-        <Products data={data} />
+        <Products data={data} sort />
 
         <div className={style.Button}>
           <div />

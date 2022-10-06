@@ -8,6 +8,7 @@ import { Select } from '../UI/Select'
 
 export type Props = {
   data?: IProduct[]
+  sort?: boolean | false
 }
 
 export default function Products(props: Props) {
@@ -48,43 +49,45 @@ export default function Products(props: Props) {
   return (
     <section className={style.Products}>
       <Container>
-        <div className={style.Sorting}>
-          <div />
-          <div>
-            <p>Сортування:</p>
+        {props.sort && (
+          <div className={style.Sorting}>
+            <div />
+            <div>
+              <p>Сортування:</p>
 
-            <Select
-              className={style.Select}
-              options={[
-                {
-                  value: 'name',
-                  lable: 'Назва',
-                },
-                {
-                  value: 'price',
-                  lable: 'Ціна',
-                },
-                {
-                  value: 'discount',
-                  lable: 'Знижка',
-                },
-              ]}
-              value={sorting.order}
-              onSelect={(newValue: keyof IProduct) =>
-                setSorting({ ...sorting, order: newValue })
-              }
-              hideOnSelect
-            />
+              <Select
+                className={style.Select}
+                options={[
+                  {
+                    value: 'name',
+                    lable: 'Назва',
+                  },
+                  {
+                    value: 'price',
+                    lable: 'Ціна',
+                  },
+                  {
+                    value: 'discount',
+                    lable: 'Знижка',
+                  },
+                ]}
+                value={sorting.order}
+                onSelect={(newValue: keyof IProduct) =>
+                  setSorting({ ...sorting, order: newValue })
+                }
+                hideOnSelect
+              />
 
-            <button
-              onClick={() =>
-                setSorting({ ...sorting, direction: !sorting.direction })
-              }
-            >
-              {sorting.direction ? <BiChevronUp /> : <BiChevronDown />}
-            </button>
+              <button
+                onClick={() =>
+                  setSorting({ ...sorting, direction: !sorting.direction })
+                }
+              >
+                {sorting.direction ? <BiChevronUp /> : <BiChevronDown />}
+              </button>
+            </div>
           </div>
-        </div>
+        )}
 
         <div className={style.List}>
           <ul>

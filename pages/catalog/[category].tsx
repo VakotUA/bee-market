@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
-import Discount from '../../components/Promotional'
 import { Filters } from '../../components/UI/Filters'
 
 import ADSImage1 from '../../assets/images/ads_1.png'
@@ -99,7 +98,6 @@ export default function CategoryPage() {
         </div>
       </Container>
       <Filters filters={filters} setFilters={setFilters} />
-
       {/* <ADS image_s={ADSImage2.src} image_l={ADSImage1.src} /> */}
       <Products />
       <ADS image_s={ADSImage3.src} image_l={ADSImage4.src} reverse />

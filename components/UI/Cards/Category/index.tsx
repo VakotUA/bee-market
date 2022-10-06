@@ -19,7 +19,14 @@ export function Card(props: Props) {
       className={classNames(style.Card, props.className)}
       style={props.style}
     >
-      <Link href={'/catalog/' + props.category.link}>
+      <Link
+        href={{
+          pathname: '/catalog/[category]',
+          query: {
+            category: props.category.id,
+          },
+        }}
+      >
         <a>
           <Image
             src={props.category.image || NotFound.src}
