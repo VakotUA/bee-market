@@ -50,7 +50,7 @@ export default function Products(props: Props) {
 
   return (
     <section className={classNames(style.Products, props.className)}>
-      <Container>
+      <Container className={style.Content}>
         {props.sort && (
           <div className={style.Sorting}>
             <div />

@@ -53,6 +53,8 @@ export default function Header() {
           <a href="mailto:info@bee.market">info@bee.market</a>
         </div>
 
+        <span />
+
         <nav className={style.Navigation}>
           <NavLink onClick={() => setIsVisible(false)} href="/catalog">
             Каталог

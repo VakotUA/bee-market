@@ -29,6 +29,7 @@ const moc_product: { data: IProduct } = {
     name: 'ФАРБА-ГРУНТ УНІВЕРСАЛЬНА FARBEX 4.2КГ',
     price: 308,
     count: 10,
+    // image: ,
     reviews: [
       {
         id: '00124124',
@@ -110,6 +111,7 @@ export default function SigleProductPage() {
               <Image
                 src={data?.data?.image || NotFoundImage}
                 alt={data?.data?.name}
+                style={{ opacity: data?.data?.image ? 1 : 0.25 }}
                 layout="responsive"
               />
             </div>
