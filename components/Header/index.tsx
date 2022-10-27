@@ -28,10 +28,13 @@ import { searchSlice } from '../../modules/store/reducers/searchSlice'
 import { useSession } from 'next-auth/react'
 
 import { MEDIA_LINKS } from '../../lib/constants'
+import CartModal from '../ModalWindows/Cart'
 
 const count = 0 // temporary products in cart count
 
 export default function Header() {
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
+
   const { data: session } = useSession()
   const [isVisible, setIsVisible] = useState<boolean>(false)
 
@@ -45,157 +48,167 @@ export default function Header() {
   }, [debounce, dispatch, reduxSetSearch])
 
   return (
-    <header className={style.Header}>
-      <div className={classNames(style.Menu, { [style.Active]: isVisible })}>
-        <div className={style.Contacts}>
-          <a href="tel:+38(067)7776653">+38 (067) 777 66 53</a>
-          <a href="tel:+38(063)6667753">+38 (063) 666 77 53</a>
-          <a href="mailto:info@bee.market">info@bee.market</a>
+    <>
+      <header className={style.Header}>
+        <div className={classNames(style.Menu, { [style.Active]: isVisible })}>
+          <div className={style.Contacts}>
+            <a href="tel:+38(067)7776653">+38 (067) 777 66 53</a>
+            <a href="tel:+38(063)6667753">+38 (063) 666 77 53</a>
+            <a href="mailto:info@bee.market">info@bee.market</a>
+          </div>
+
+          <span />
+
+          <nav className={style.Navigation}>
+            <NavLink onClick={() => setIsVisible(false)} href="/catalog">
+              Каталог
+            </NavLink>
+            <NavLink onClick={() => setIsVisible(false)} href="/partners">
+              Партнерам
+            </NavLink>
+            <NavLink onClick={() => setIsVisible(false)} href="/news">
+              Новини
+            </NavLink>
+            <NavLink onClick={() => setIsVisible(false)} href="/delivery">
+              Оплата та Доставка
+            </NavLink>
+            <NavLink onClick={() => setIsVisible(false)} href="/contacts">
+              Контакти
+            </NavLink>
+          </nav>
         </div>
 
-        <span />
+        <Image
+          src={Background}
+          alt="background"
+          className={style.Background}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center top"
+        />
 
-        <nav className={style.Navigation}>
-          <NavLink onClick={() => setIsVisible(false)} href="/catalog">
-            Каталог
-          </NavLink>
-          <NavLink onClick={() => setIsVisible(false)} href="/partners">
-            Партнерам
-          </NavLink>
-          <NavLink onClick={() => setIsVisible(false)} href="/news">
-            Новини
-          </NavLink>
-          <NavLink onClick={() => setIsVisible(false)} href="/delivery">
-            Оплата та Доставка
-          </NavLink>
-          <NavLink onClick={() => setIsVisible(false)} href="/contacts">
-            Контакти
-          </NavLink>
-        </nav>
-      </div>
-
-      <Image
-        src={Background}
-        alt="background"
-        className={style.Background}
-        layout="fill"
-        objectFit="cover"
-        objectPosition="center top"
-      />
-
-      <div className={style.Content}>
-        <div className={style.SubHeader}>
-          <Container className={style.Container}>
-            <span className={style.Search}>
-              <IoMdSearch className={style.Icon} />
-              <input
-                type="text"
-                placeholder="Пошук"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </span>
-            <span className={style.Contacts}>
-              <a href="mailto:info@bee.market">info@bee.market</a>
-              <p style={{ opacity: 0.5 }}>/</p>
-              <a href="tel:+38(067)7776653">
-                <Primary>+38 (067) 777 66 53</Primary>
-              </a>
-              <p style={{ opacity: 0.5 }}>/</p>
-              <a href="tel:+38(063)6667753">
-                <Primary>+38 (063) 666 77 53</Primary>
-              </a>
-            </span>
-          </Container>
-        </div>
-
-        <div className={style.SubHeader}>
-          <Container className={style.Container}>
-            <div className={style.Block}>
-              <Link href="/">
-                <a className={style.Logo}>
-                  <div className={style.Image}>
-                    <Image src={Logo} alt="logo" />
-                  </div>
-                  <p>
-                    <Primary className={style.Bee}>BEE</Primary> MARKET
-                  </p>
+        <div className={style.Content}>
+          <div className={style.SubHeader}>
+            <Container className={style.Container}>
+              <span className={style.Search}>
+                <IoMdSearch className={style.Icon} />
+                <input
+                  type="text"
+                  placeholder="Пошук"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+              </span>
+              <span className={style.Contacts}>
+                <a href="mailto:info@bee.market">info@bee.market</a>
+                <p style={{ opacity: 0.5 }}>/</p>
+                <a href="tel:+38(067)7776653">
+                  <Primary>+38 (067) 777 66 53</Primary>
                 </a>
-              </Link>
-
-              <div className={style.Socials}>
-                <div className={style.Particle}>
-                  <Image src={HexagonSmall} alt="hex" />
-                </div>
-                <div className={style.Particle}>
-                  <Image src={HexagonSmall} alt="hex" />
-                </div>
-                <a
-                  href={MEDIA_LINKS.TELEGRAM_LINK}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Image src={Telegram} alt="telegram" />
+                <p style={{ opacity: 0.5 }}>/</p>
+                <a href="tel:+38(063)6667753">
+                  <Primary>+38 (063) 666 77 53</Primary>
                 </a>
-                <a
-                  href={MEDIA_LINKS.INSTAGRAM_LINK}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Image src={Instagram} alt="instagram" />
-                </a>
-                <a
-                  href={MEDIA_LINKS.FACEBOOK_LINK}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Image src={Facebook} alt="facebook" />
-                </a>
-              </div>
-            </div>
+              </span>
+            </Container>
+          </div>
 
-            <div className={style.Block}>
-              <nav className={style.Navigation}>
-                <NavLink href="/catalog">Каталог</NavLink>
-                <NavLink href="/partners">Партнерам</NavLink>
-                <NavLink href="/news">Новини</NavLink>
-                <NavLink href="/delivery">Оплата та Доставка</NavLink>
-                <NavLink href="/contacts">Контакти</NavLink>
-              </nav>
-            </div>
-
-            <div className={style.Block}>
-              <BurgerMenu
-                className={style.BurgerMenu}
-                isActive={isVisible}
-                onClick={() => setIsVisible(!isVisible)}
-              />
-
-              <Button className={style.Button}>
-                <Link href="/profile">
-                  <a>
-                    <BsPersonFill className={style.Icon} />
-                    <p>{session ? session?.user?.name : 'Мій кабінет'}</p>
+          <div className={style.SubHeader}>
+            <Container className={style.Container}>
+              <div className={style.Block}>
+                <Link href="/">
+                  <a className={style.Logo}>
+                    <div className={style.Image}>
+                      <Image src={Logo} alt="logo" />
+                    </div>
+                    <p>
+                      <Primary className={style.Bee}>BEE</Primary> MARKET
+                    </p>
                   </a>
                 </Link>
-              </Button>
 
-              <div className={style.Cart}>
-                <div className={style.Particle}>
-                  <Image src={HexagonSmall} alt="hex" />
+                <div className={style.Socials}>
+                  <div className={style.Particle}>
+                    <Image src={HexagonSmall} alt="hex" />
+                  </div>
+                  <div className={style.Particle}>
+                    <Image src={HexagonSmall} alt="hex" />
+                  </div>
+                  <a
+                    href={MEDIA_LINKS.TELEGRAM_LINK}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Image src={Telegram} alt="telegram" />
+                  </a>
+                  <a
+                    href={MEDIA_LINKS.INSTAGRAM_LINK}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Image src={Instagram} alt="instagram" />
+                  </a>
+                  <a
+                    href={MEDIA_LINKS.FACEBOOK_LINK}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Image src={Facebook} alt="facebook" />
+                  </a>
                 </div>
-                <p>Кошик</p>
-                <div className={style.Image}>
-                  <Image src={HexagonCart} alt="hex" />
-                </div>
-                <p className={style.Count}>
-                  {Math.min(Math.max(0, count), 999)}
-                </p>
               </div>
-            </div>
-          </Container>
+
+              <div className={style.Block}>
+                <nav className={style.Navigation}>
+                  <NavLink href="/catalog">Каталог</NavLink>
+                  <NavLink href="/partners">Партнерам</NavLink>
+                  <NavLink href="/news">Новини</NavLink>
+                  <NavLink href="/delivery">Оплата та Доставка</NavLink>
+                  <NavLink href="/contacts">Контакти</NavLink>
+                </nav>
+              </div>
+
+              <div className={style.Block}>
+                <BurgerMenu
+                  className={style.BurgerMenu}
+                  isActive={isVisible}
+                  onClick={() => setIsVisible(!isVisible)}
+                />
+
+                <Button className={style.Button} primary>
+                  <Link href="/profile">
+                    <a>
+                      <BsPersonFill className={style.Icon} />
+                      <p>{session ? session?.user?.name : 'Мій кабінет'}</p>
+                    </a>
+                  </Link>
+                </Button>
+
+                <div
+                  className={style.Cart}
+                  onClick={() => setIsModalVisible(!isModalVisible)}
+                >
+                  <div className={style.Particle}>
+                    <Image src={HexagonSmall} alt="hex" />
+                  </div>
+                  <p>Кошик</p>
+                  <div className={style.Image}>
+                    <Image src={HexagonCart} alt="hex" />
+                  </div>
+                  <p className={style.Count}>
+                    {Math.min(Math.max(0, count), 999)}
+                  </p>
+                </div>
+              </div>
+            </Container>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      <CartModal
+        isModalVisible={isModalVisible}
+        setIsModalVisible={setIsModalVisible}
+      />
+    </>
   )
 }

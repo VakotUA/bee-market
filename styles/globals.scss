@@ -9,14 +9,12 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  scroll-behavior: smooth;
-
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
 body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
   background: $bgColor;
 
   width: 100vw;

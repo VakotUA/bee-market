@@ -1,11 +1,17 @@
 import classNames from 'classnames'
 import { useState } from 'react'
 import style from './style.module.scss'
+import { IProduct } from '../../../modules/models/Product'
+
+export type OptionType = {
+  value: keyof IProduct
+  lable: string
+}
 
 export type Props = {
   value: string
   onSelect: (params: any) => void
-  options: { value: string; lable: string }[]
+  options: OptionType[]
   className?: string
   style?: React.CSSProperties
   hideOnSelect?: boolean

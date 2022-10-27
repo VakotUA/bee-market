@@ -1,0 +1,97 @@
+@import '../../../styles/variables.scss';
+
+.Cart {
+  > div {
+    padding-inline: 12px;
+  }
+
+  > div:nth-child(1) {
+    border-bottom: 1px solid $lightenDarkColor;
+    margin-bottom: 24px;
+
+    .Title {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      margin-top: 30px;
+      margin-bottom: 30px;
+
+      h2 {
+        font-size: 24px;
+        font-weight: 800;
+      }
+    }
+
+    .List {
+      padding-inline: 12px;
+
+      max-height: 360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 6px;
+
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+      &::-webkit-scrollbar-track {
+        background: $lightenDarkColor;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: $primaryColor2;
+      }
+      &::-webkit-scrollbar-thumb:hover {
+        background: $primaryColor3;
+      }
+
+      li {
+        width: 100%;
+        min-height: 116px;
+        background-color: white;
+        border: 1px solid $lightenDarkColor;
+        border-radius: 6px;
+      }
+    }
+  }
+
+  > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+
+    .Total {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      > p:first-of-type {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      > p:last-of-type {
+        font-size: 18px;
+        font-weight: 700;
+      }
+    }
+
+    .Button {
+      width: calc(100% - 48px);
+      height: 42px;
+
+      font-size: 16px;
+      font-weight: 600;
+      color: $lightDarkColor;
+    }
+  }
+}
