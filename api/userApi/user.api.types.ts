@@ -1,17 +1,11 @@
 import { IUser } from '../../modules/models/User'
-export type { IUser }
 
-export interface BaseQuery {
+export interface IBaseQuery {
   success: boolean
   data: IUser
 }
 
-export interface AllUsersQuery {
-  success: boolean
-  data: IUser[]
-}
-
-export interface ISignUpData {
+export interface ILoginData {
   name: string
   email: string
   password: string

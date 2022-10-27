@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { BaseQuery, IUser, AllUsersQuery, ISignUpData } from './user.api.types'
+import { IBaseQuery, ILoginData } from './user.api.types'
 
 export const userApi = createApi({
   reducerPath: 'userApi',
@@ -7,42 +7,27 @@ export const userApi = createApi({
   refetchOnReconnect: true,
   baseQuery: fetchBaseQuery({ baseUrl: `/api/` }),
   endpoints: (build) => ({
-    signUp: build.mutation<ISignUpData, Partial<ISignUpData>>({
+    login: build.mutation<ILoginData, Partial<ILoginData>>({
       query(data) {
         const { ...body } = data
         return {
-          url: 'auth/sign-up',
+          url: 'login',
           method: 'POST',
           body,
         }
       },
     }),
-    getUserByEmail: build.query<BaseQuery, string>({
-      query: (email) => `users/email/${email}`,
-    }),
-    getUserById: build.query<BaseQuery, string>({
-      query: (id) => `users/${id}`,
-    }),
-    updateUser: build.mutation<IUser, Partial<IUser>>({
-      query(data) {
-        const { _id, ...body } = data
-        return {
-          url: `users/${_id}`,
-          method: 'PATCH',
-          body,
-        }
-      },
-    }),
-    getAllUsers: build.query<AllUsersQuery, string>({
-      query: () => '/users',
-    }),
+    // getUserByEmail: build.query<IBaseQuery, string>({
+    //   query: (email) => `users/email/${email}`,
+    // }),
+    // getUserById: build.query<IBaseQuery, string>({
+    //   query: (id) => `users/${id}`,
+    // }),
   }),
 })
 
 export const {
-  useSignUpMutation,
-  useGetUserByEmailQuery,
-  useGetUserByIdQuery,
-  useUpdateUserMutation,
-  useGetAllUsersQuery,
+  useLoginMutation,
+  // useGetUserByEmailQuery,
+  // useGetUserByIdQuery,
 } = userApi
