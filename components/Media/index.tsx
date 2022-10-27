@@ -85,7 +85,9 @@ export default function Media() {
 
             <Link href="/blog">
               <a>
-                <Button className={style.Button}>НАШ БЛОГ</Button>
+                <Button className={style.Button} primary>
+                  НАШ БЛОГ
+                </Button>
               </a>
             </Link>
           </div>

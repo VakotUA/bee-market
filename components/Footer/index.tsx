@@ -282,7 +282,7 @@ export function Contacts() {
 
       <a href="tel:+38(063)5028874">+38 (063) 502 88 74</a>
 
-      <Button className={style.Button}>ЗАМОВИТИ ДЗВІНОК</Button>
+      <Button className={style.Button} primary>ЗАМОВИТИ ДЗВІНОК</Button>
     </div>
   )
 }

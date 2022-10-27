@@ -3,35 +3,16 @@
 .Button {
   cursor: pointer;
 
-  color: black;
+  color: $darkColor;
   position: relative;
   z-index: 1;
 
   overflow: hidden;
   border-radius: 5px;
+  background: $lightColor;
+  border: 1px solid $lightenDarkColor;
 
   transition: color 0.3s, box-shadow 0.5s;
-
-  &::after {
-    content: '';
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(
-      135deg,
-      $primaryColor1,
-      $primaryColor2,
-      $primaryColor3,
-      $primaryColor1
-    );
-
-    position: absolute;
-    left: 0;
-    top: 0;
-    transform: translateX(0);
-    z-index: -1;
-
-    transition: transform 0.5s;
-  }
 
   &:hover {
     color: $darkColor;
@@ -44,4 +25,29 @@
 
   font-size: 12px;
   font-weight: 600;
+
+  &.Primary {
+    border: none;
+
+    &::after {
+      content: '';
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        $primaryColor1,
+        $primaryColor2,
+        $primaryColor3,
+        $primaryColor1
+      );
+
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translateX(0);
+      z-index: -1;
+
+      transition: transform 0.5s;
+    }
+  }
 }

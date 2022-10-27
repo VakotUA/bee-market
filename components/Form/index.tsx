@@ -36,7 +36,9 @@ export default function Form() {
 
           <Link href="/blog">
             <a>
-              <Button className={style.Button}>НАШ БЛОГ</Button>
+              <Button className={style.Button} primary>
+                НАШ БЛОГ
+              </Button>
             </a>
           </Link>
         </div>

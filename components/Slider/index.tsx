@@ -74,7 +74,7 @@ export default function Slider() {
           <p>Знижки до 20%</p>
           <p>на всі групи лакофарбових матеріалів</p>
 
-          <Button className={style.Button}>
+          <Button className={style.Button} primary>
             <Link href="/discount">ОТРИМАТИ ЗНИЖКУ</Link>
           </Button>
         </div>

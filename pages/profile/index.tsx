@@ -22,14 +22,22 @@ export default function ProfilePage() {
             <Primary>{session?.user?.name}</Primary>
           </h1>
 
-          <Button style={{ width: 150, height: 30 }} onClick={() => signOut()}>
+          <Button
+            style={{ width: 150, height: 30 }}
+            onClick={() => signOut()}
+            primary
+          >
             Sign Out
           </Button>
         </>
       )}
 
       {!session && (
-        <Button style={{ width: 150, height: 30 }} onClick={() => signIn()}>
+        <Button
+          style={{ width: 150, height: 30 }}
+          onClick={() => signIn()}
+          primary
+        >
           Sign In
         </Button>
       )}

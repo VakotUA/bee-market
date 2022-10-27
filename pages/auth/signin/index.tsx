@@ -35,6 +35,7 @@ export default function SignIn({ providers }: Props) {
           <Button
             style={{ width: 150, height: 30 }}
             onClick={() => signIn(provider.id)}
+            primary
           >
             With {provider.name}
           </Button>

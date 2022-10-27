@@ -73,6 +73,7 @@ export function Card(props: Props) {
                     e.preventDefault()
                     // TODO: some logic
                   }}
+                  primary
                 >
                   В кошик
                 </Button>
