@@ -34,21 +34,21 @@ const moc_categories = [
 const moc_products = [
   {
     id: '1111111111',
-    name: 'Диск для тріммера',
+    name: 'qДиск для тріммера',
     link: '/123',
     price: 150,
     discount: 1,
   },
   {
     id: '2222222222',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40',
+    name: 'wДиск для тріммера Gartner 255x25,4 мм 40',
     link: '/123',
     price: 250,
     discount: 5,
   },
   {
     id: '33333333333',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
+    name: 'eДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
     image: MOCImage.src,
     link: '/123',
     price: 350,
@@ -56,7 +56,7 @@ const moc_products = [
   },
   {
     id: '44444444444',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
+    name: 'rДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
     image: MOCImage.src,
     link: '/123',
     price: 550,
@@ -72,21 +72,21 @@ const moc_products = [
   },
   {
     id: '66666666666',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
+    name: 'tДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
     link: '/123',
     price: 950,
     discount: 4,
   },
   {
     id: '77777777777',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
+    name: 'yДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
     link: '/123',
     price: 750,
     discount: 9,
   },
   {
     id: '888888888888',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
+    name: 'uДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
     image: MOCImage.src,
     link: '/123',
     price: 850,
@@ -94,14 +94,14 @@ const moc_products = [
   },
   {
     id: '999999999999',
-    name: 'Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців',
+    name: 'iДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців',
     link: '/123',
     price: 650,
     discount: 7,
   },
   {
     id: '000000000000',
-    name: 'Диск для тріммера Gartner 255x25,4',
+    name: 'oДиск для тріммера Gartner 255x25,4',
     image: MOCImage.src,
     link: '/123',
     price: 50,
@@ -155,7 +155,7 @@ export default function Discount() {
 
         <div className={style.Button}>
           <div />
-          <Button className={style.Button}>
+          <Button className={style.Button} primary>
             <Link href="/">БІЛЬШЕ ТОВАРІВ</Link>
           </Button>
         </div>

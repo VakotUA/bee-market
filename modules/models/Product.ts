@@ -4,10 +4,12 @@ export interface IProduct {
   image?: string
   price: number
   count?: number
-  description?: string
+  description?: IDescription
   reviews?: IReview[]
   discount?: number
 }
+
+export interface IDescription {}
 
 export interface IReview {
   id: number | string

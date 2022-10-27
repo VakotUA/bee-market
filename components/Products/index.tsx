@@ -4,16 +4,30 @@ import { Card } from '../UI/Cards/Product'
 import { Container } from '../Layout/Container'
 import { useState, useEffect } from 'react'
 import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
-import { Select } from '../UI/Select'
+import { Select, OptionType } from '../UI/Select'
 import classNames from 'classnames'
 
 export type Props = {
-  data?: IProduct[]
+  data: IProduct[]
   sort?: boolean | false
   className?: string
 }
 
 export default function Products(props: Props) {
+  const [options, setOptions] = useState<OptionType[]>([
+    {
+      value: 'name',
+      lable: 'Назва',
+    },
+    {
+      value: 'price',
+      lable: 'Ціна',
+    },
+    {
+      value: 'discount',
+      lable: 'Знижка',
+    },
+  ])
   const [data, setData] = useState(props.data)
 
   // order: [Ціна, Назва, Знижка...],
@@ -27,19 +41,18 @@ export default function Products(props: Props) {
     if (!props.data) return
 
     setData([
-      ...(sorting.direction
-        ? props.data.sort(
-            (a, b) => (a[sorting.order] as any) - (b[sorting.order] as any)
-          )
-        : props.data.sort(
-            (b, a) => (a[sorting.order] as any) - (b[sorting.order] as any)
-          )),
+      ...props.data.sort((a, b) =>
+        (a[sorting.order] as any) > (b[sorting.order] as any) &&
+        sorting.direction
+          ? 1
+          : -1
+      ),
     ])
   }, [props.data, setData, sorting])
 
   if (!data)
     return (
-      <section className={style.Products}>
+      <section className={classNames(style.Products, props.className)}>
         <Container>
           <h1 style={{ fontSize: 48, fontWeight: 800 }}>
             No products found :(
@@ -59,20 +72,7 @@ export default function Products(props: Props) {
 
               <Select
                 className={style.Select}
-                options={[
-                  {
-                    value: 'name',
-                    lable: 'Назва',
-                  },
-                  {
-                    value: 'price',
-                    lable: 'Ціна',
-                  },
-                  {
-                    value: 'discount',
-                    lable: 'Знижка',
-                  },
-                ]}
+                options={options}
                 value={sorting.order}
                 onSelect={(newValue: keyof IProduct) =>
                   setSorting({ ...sorting, order: newValue })
