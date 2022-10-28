@@ -24,6 +24,7 @@ import classNames from 'classnames'
 
 import { useAppDispatch } from '../../modules/store/hooks'
 import { searchSlice } from '../../modules/store/reducers/searchSlice'
+import { modalsSlice } from '../../modules/store/reducers/modalsSlice'
 
 import { useSession } from 'next-auth/react'
 
@@ -33,8 +34,6 @@ import CartModal from '../ModalWindows/Cart'
 const count = 0 // temporary products in cart count
 
 export default function Header() {
-  const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
-
   const { data: session } = useSession()
   const [isVisible, setIsVisible] = useState<boolean>(false)
 
@@ -42,6 +41,7 @@ export default function Header() {
   const debounce = useDebounce<string>(search)
   const dispatch = useAppDispatch()
   const { setSearch: reduxSetSearch } = searchSlice.actions
+  const { toggleCartModal } = modalsSlice.actions
 
   useEffect(() => {
     dispatch(reduxSetSearch(debounce))
@@ -186,7 +186,7 @@ export default function Header() {
 
                 <div
                   className={style.Cart}
-                  onClick={() => setIsModalVisible(!isModalVisible)}
+                  onClick={() => dispatch(toggleCartModal())}
                 >
                   <div className={style.Particle}>
                     <Image src={HexagonSmall} alt="hex" />
@@ -205,10 +205,7 @@ export default function Header() {
         </div>
       </header>
 
-      <CartModal
-        isModalVisible={isModalVisible}
-        setIsModalVisible={setIsModalVisible}
-      />
+      <CartModal />
     </>
   )
 }

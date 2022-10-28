@@ -2,20 +2,24 @@ import { Button } from '../../UI/Button'
 import Modal from '../../UI/Modal'
 import style from './style.module.scss'
 
-export type Props = {
-  isModalVisible: boolean
-  setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>
-}
+import Link from 'next/link'
+
+import { useAppSelector, useAppDispatch } from '../../../modules/store/hooks'
+import { modalsSlice } from '../../../modules/store/reducers/modalsSlice'
 
 const count = 2
 const price = 9876
 
-export default function CartModal({
-  isModalVisible,
-  setIsModalVisible,
-}: Props) {
+export default function CartModal() {
+  const dispatch = useAppDispatch()
+  const { toggleCartModal } = modalsSlice.actions
+  const visible = useAppSelector((state) => state.modalsReducer.cart)
+
   return (
-    <Modal visible={isModalVisible} setVisible={setIsModalVisible}>
+    <Modal
+      visible={visible === 'open'}
+      setVisible={() => dispatch(toggleCartModal())}
+    >
       <div className={style.Cart}>
         <div>
           <div className={style.Title}>
@@ -42,11 +46,22 @@ export default function CartModal({
             </p>
           </div>
 
-          <Button className={style.Button} primary>
-            Оформити замовлення
+          <Button
+            className={style.Button}
+            onClick={() => dispatch(toggleCartModal())}
+            primary
+          >
+            <Link href="/cart">
+              <a>Оформити замовлення</a>
+            </Link>
           </Button>
 
-          <Button className={style.Button}>Продовжити покупки</Button>
+          <Button
+            className={style.Button}
+            onClick={() => dispatch(toggleCartModal())}
+          >
+            <a>Продовжити покупки</a>
+          </Button>
         </div>
       </div>
     </Modal>

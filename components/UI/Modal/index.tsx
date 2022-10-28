@@ -13,13 +13,14 @@ export type Props = {
 }
 
 export default function Modal(props: Props) {
-  props.visible ? useLockedBody(true) : useLockedBody(false)
+  useLockedBody(props.visible)
 
   if (!props.visible) return <></>
 
   return (
     <>
       <div className={style.Background} />
+
       <div className={style.Modal} style={props.style}>
         <Button
           className={style.Button}

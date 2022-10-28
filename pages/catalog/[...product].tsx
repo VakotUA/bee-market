@@ -23,12 +23,16 @@ import { Rate } from '../../components/UI/Rate'
 import Link from 'next/link'
 import classNames from 'classnames'
 
+import { useAppDispatch } from '../../modules/store/hooks'
+import { modalsSlice } from '../../modules/store/reducers/modalsSlice'
+
 const moc_product: { data: IProduct } = {
   data: {
     id: '000000000',
     name: 'ФАРБА-ГРУНТ УНІВЕРСАЛЬНА FARBEX 4.2КГ',
     price: 308,
     count: 10,
+    discount: 10,
     reviews: [
       {
         id: '00124124',
@@ -80,11 +84,25 @@ const moc_similarProducts: IProduct[] = [
 ]
 
 export default function SigleProductPage() {
-  const router = useRouter()
-
   const data = moc_product
   const [count, setCount] = useState<number>(1)
   const [active, setActive] = useState<string>('')
+
+  const dispatch = useAppDispatch()
+  const { toggleCartModal } = modalsSlice.actions
+
+  const calculateRating = () => {
+    if (!data?.data?.reviews) return 0
+
+    const total = data?.data?.reviews.reduce(
+      (previous, current) => previous + current?.rating,
+      0
+    )
+    const average = total / data?.data?.reviews.length
+
+    // round to 0.5 step
+    return Math.round(average * 2) / 2
+  }
 
   return (
     <>
@@ -96,13 +114,11 @@ export default function SigleProductPage() {
         </div>
 
         <div className={style.Product}>
-          {data?.data?.discount ? (
+          {data?.data?.discount && (
             <DiscountMark
               value={data?.data?.discount}
               className={style.Discount}
             />
-          ) : (
-            ''
           )}
 
           <div className={style.Description}>
@@ -125,27 +141,13 @@ export default function SigleProductPage() {
                   <div>
                     <button>Додати до обраних</button>
 
-                    {data?.data?.reviews && (
-                      <Rate
-                        value={
-                          Math.round(
-                            (data?.data?.reviews?.reduce(
-                              (previous, current) => previous + current?.rating,
-                              0
-                            ) /
-                              data?.data?.reviews?.length) *
-                              2
-                          ) / 2
-                        }
-                      />
-                    )}
-                    {!data?.data?.reviews && <Rate value={0} />}
+                    <Rate value={calculateRating()} />
                   </div>
                 </div>
 
                 <div>
                   <p>00000000</p>
-                  <p>Відгуків {data?.data?.reviews?.length}</p>
+                  <p>Відгуків {data?.data?.reviews?.length || 0}</p>
                 </div>
               </div>
 
@@ -178,6 +180,10 @@ export default function SigleProductPage() {
                     className={classNames(style.Button, {
                       [style.Disable]: !data?.data?.count,
                     })}
+                    onClick={() => {
+                      dispatch(toggleCartModal())
+                      // TODO: logic
+                    }}
                     primary
                   >
                     В кошик
@@ -211,6 +217,7 @@ export default function SigleProductPage() {
             </div>
           </div>
 
+          {/* TODO: to component */}
           <div className={style.Select}>
             <div
               className={classNames({

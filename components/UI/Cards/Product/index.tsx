@@ -12,6 +12,9 @@ import NotFound from '../../../../assets/images/image_not_found.png'
 import { IProduct } from '../../../../modules/models/Product'
 import { ICategory } from '../../../../modules/models/Category'
 
+import { useAppDispatch } from '../../../../modules/store/hooks'
+import { modalsSlice } from '../../../../modules/store/reducers/modalsSlice'
+
 export type Props = {
   product: IProduct
   className?: string
@@ -22,6 +25,9 @@ export function Card(props: Props) {
   // const {data} = useGetCategoryByProductId(props.product.id)
   const category = 'paint_materials' // .link
   const sub_category = 'paints' // .link
+
+  const dispatch = useAppDispatch()
+  const { toggleCartModal } = modalsSlice.actions
 
   return (
     <div
@@ -71,7 +77,8 @@ export function Card(props: Props) {
                   className={style.Button}
                   onClick={(e) => {
                     e.preventDefault()
-                    // TODO: some logic
+                    dispatch(toggleCartModal())
+                    // TODO: logic
                   }}
                   primary
                 >

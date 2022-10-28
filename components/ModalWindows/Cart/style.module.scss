@@ -86,12 +86,18 @@
     }
 
     .Button {
-      width: calc(100% - 48px);
-      height: 42px;
+      a {
+        width: calc(320px - 48px);
+        height: 42px;
 
-      font-size: 16px;
-      font-weight: 600;
-      color: $lightDarkColor;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 16px;
+        font-weight: 600;
+        color: $lightDarkColor;
+      }
     }
   }
 }

@@ -8,7 +8,7 @@ import { Select, OptionType } from '../UI/Select'
 import classNames from 'classnames'
 
 export type Props = {
-  data: IProduct[]
+  data?: IProduct[]
   sort?: boolean | false
   className?: string
 }
@@ -92,13 +92,15 @@ export default function Products(props: Props) {
         )}
 
         <div className={style.List}>
-          <ul>
-            {data.map((item) => (
-              <li key={item.id}>
-                <Card product={item} />
-              </li>
-            ))}
-          </ul>
+          {data && (
+            <ul>
+              {data.map((item) => (
+                <li key={item.id}>
+                  <Card product={item} />
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </Container>
     </section>
