@@ -14,7 +14,7 @@
 .Modal {
   width: 100%;
   max-width: 320px;
-  min-height: 500px;
+  min-height: 200px;
 
   z-index: 1000;
 
@@ -28,7 +28,6 @@
   .Content {
     flex: 1;
     overflow: hidden;
-    overflow-y: auto;
     border-radius: 6px;
     background-color: $bgColor;
   }

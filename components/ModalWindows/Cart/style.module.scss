@@ -24,10 +24,15 @@
     border-top: 1px solid $lightenDarkColor;
     margin-bottom: 24px;
 
+    @media (max-height: 700px) {
+      display: none;
+    }
+
     .List {
       padding-inline: 12px;
 
       max-height: 360px;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
