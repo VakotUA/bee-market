@@ -8,11 +8,10 @@ function useLockedBody(initialLocked = false): UseLockedBodyOutput {
   useEffect(() => {
     if (!locked) return
 
-    const originalBodyOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    document.body.classList.add('scroll-lock')
 
     return () => {
-      document.body.style.overflow = originalBodyOverflow
+      document.body.classList.remove('scroll-lock')
     }
   }, [locked])
 

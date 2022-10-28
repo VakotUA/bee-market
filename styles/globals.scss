@@ -9,16 +9,17 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
-body {
+  scroll-behavior: smooth;
   overflow-x: hidden;
   overflow-y: auto;
-  scroll-behavior: smooth;
-  background: $bgColor;
 
   width: 100vw;
   min-height: 100vh;
+}
+
+body {
+  background: $bgColor;
 
   position: relative;
 
@@ -26,4 +27,10 @@ body {
   @media (max-width: $md4) {
     padding-top: 90px;
   }
+}
+
+html:has(body.scroll-lock),
+body.scroll-lock {
+  overflow-x: hidden;
+  overflow-y: hidden;
 }

@@ -28,6 +28,7 @@
   .Content {
     flex: 1;
     overflow: hidden;
+    overflow-y: auto;
     border-radius: 6px;
     background-color: $bgColor;
   }

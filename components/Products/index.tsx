@@ -3,7 +3,7 @@ import style from './style.module.scss'
 import { Card } from '../UI/Cards/Product'
 import { Container } from '../Layout/Container'
 import { useState, useEffect } from 'react'
-import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
+import { BiChevronUp } from 'react-icons/bi'
 import { Select, OptionType } from '../UI/Select'
 import classNames from 'classnames'
 
@@ -85,7 +85,12 @@ export default function Products(props: Props) {
                   setSorting({ ...sorting, direction: !sorting.direction })
                 }
               >
-                {sorting.direction ? <BiChevronUp /> : <BiChevronDown />}
+                <BiChevronUp
+                  className={classNames(
+                    { [style.Rotate]: sorting.direction },
+                    style.Icon
+                  )}
+                />
               </button>
             </div>
           </div>

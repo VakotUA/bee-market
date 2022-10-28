@@ -21,11 +21,11 @@ export default function CartModal() {
       setVisible={() => dispatch(toggleCartModal())}
     >
       <div className={style.Cart}>
-        <div>
-          <div className={style.Title}>
-            <h2>ВАШ КОШИК ТОВАРІВ</h2>
-          </div>
+        <div className={style.Title}>
+          <h2>ВАШ КОШИК ТОВАРІВ</h2>
+        </div>
 
+        <div>
           <ul className={style.List}>
             {/* TODO: {map} */}
             <li></li>
