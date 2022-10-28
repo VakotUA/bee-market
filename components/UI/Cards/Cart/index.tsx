@@ -1,7 +1,6 @@
 import classNames from 'classnames'
 import style from './style.module.scss'
 
-import { Button } from '../../../UI/Button'
 import { DiscountMark } from '../../../UI/Discount'
 
 import Image from 'next/image'
@@ -10,10 +9,6 @@ import Link from 'next/link'
 import NotFound from '../../../../assets/images/image_not_found.png'
 
 import { IProduct } from '../../../../modules/models/Product'
-import { ICategory } from '../../../../modules/models/Category'
-
-import { useAppDispatch } from '../../../../modules/store/hooks'
-import { modalsSlice } from '../../../../modules/store/reducers/modalsSlice'
 
 export type Props = {
   product: IProduct
@@ -25,9 +20,6 @@ export function Card(props: Props) {
   // const {data} = useGetCategoryByProductId(props.product.id)
   const category = 'paint_materials' // .link
   const sub_category = 'paints' // .link
-
-  const dispatch = useAppDispatch()
-  const { toggleCartModal } = modalsSlice.actions
 
   return (
     <div
@@ -71,17 +63,8 @@ export function Card(props: Props) {
               <p>{props.product.id}</p>
               <span>
                 <p>{props.product.price}грн</p>
-                <Button
-                  className={style.Button}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    dispatch(toggleCartModal())
-                    // TODO: logic
-                  }}
-                  primary
-                >
-                  В кошик
-                </Button>
+
+                <p>{'total'}</p>
               </span>
             </div>
           </div>
