@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-import ADSImage1 from '../../assets/images/banner/banner_1.png'
-import ADSImage2 from '../../assets/images/banner/banner_2.png'
-import ADSImage3 from '../../assets/images/banner/banner_3.png'
-import ADSImage4 from '../../assets/images/banner/banner_4.png'
+import ADSImage1 from '../../assets/images/banner/Banner_1.png'
+import ADSImage2 from '../../assets/images/banner/Banner_2.png'
+import ADSImage3 from '../../assets/images/banner/Banner_3.png'
+import ADSImage4 from '../../assets/images/banner/Banner_4.png'
 import ADS from '../../components/ADS'
 
 import Form from '../../components/Form'
