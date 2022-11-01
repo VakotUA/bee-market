@@ -40,6 +40,7 @@ export default function Slider() {
             objectFit="cover"
             quality={100}
             alt="slide"
+            unoptimized
           />
         ))}
       </div>

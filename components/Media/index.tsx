@@ -5,13 +5,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import style from './style.module.scss'
 
-// import Facebook from '../../assets/images/facebook_outlined.png'
-// import Instagram from '../../assets/images/instagram_outlined.png'
-// import Telegram from '../../assets/images/telegram_outlined.png'
-
 import BgImage from '../../assets/images/Graf.png'
 
 import { MEDIA_LINKS } from '../../lib/constants'
+import { Facebook } from '../../assets/svgs/facebook'
+import { Instagram } from '../../assets/svgs/instagram'
+import { Telegram } from '../../assets/svgs/telegram'
 
 export default function Media() {
   return (
@@ -26,6 +25,7 @@ export default function Media() {
               height={806}
               layout="fixed"
               quality={100}
+              unoptimized
             />
           </div>
 
@@ -63,7 +63,7 @@ export default function Media() {
                 target="_blank"
                 rel="noreferrer"
               >
-                {/* <Image src={Telegram} alt="telegram" /> */}
+                <Telegram.Hexagon width={50} height={50} />
               </a>
 
               <a
@@ -71,7 +71,7 @@ export default function Media() {
                 target="_blank"
                 rel="noreferrer"
               >
-                {/* <Image src={Instagram} alt="instagram" /> */}
+                <Instagram.Hexagon width={50} height={50} />
               </a>
 
               <a
@@ -79,7 +79,7 @@ export default function Media() {
                 target="_blank"
                 rel="noreferrer"
               >
-                {/* <Image src={Facebook} alt="facebook" /> */}
+                <Facebook.Hexagon width={50} height={50} />
               </a>
             </div>
 
