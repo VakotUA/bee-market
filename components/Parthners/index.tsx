@@ -5,37 +5,37 @@ import { LongArrow } from '../../assets/svgs/longArrows'
 import Image from 'next/image'
 import { Primary } from '../UI/PrimaryText'
 
-const data = [
-  { image: '', link: '' },
-  { image: '', link: '' },
-  { image: '', link: '' },
-  { image: '', link: '' },
-  { image: '', link: '' },
-  { image: '', link: '' },
-  { image: '', link: '' },
-  { image: '', link: '' },
-  { image: '', link: '' },
-  { image: '', link: '' },
-  { image: '', link: '' },
-  { image: '', link: '' },
-]
+import Parthner1 from '../../assets/images/parthner/Parthner_1.png'
+import Parthner2 from '../../assets/images/parthner/Parthner_2.png'
+import Parthner3 from '../../assets/images/parthner/Parthner_3.png'
+import Parthner4 from '../../assets/images/parthner/Parthner_4.png'
+import Parthner5 from '../../assets/images/parthner/Parthner_5.png'
 
-export default function Partners() {
+const data = [
+  { image: Parthner1, link: '' },
+  { image: Parthner2, link: '' },
+  { image: Parthner3, link: '' },
+  { image: Parthner4, link: '' },
+  { image: Parthner5, link: '' },
+]
+const width = 310
+
+export default function Parthners() {
   const ref = useRef<HTMLDivElement>(null)
   const [offset, setOffset] = useState<number>(0)
 
   const changeOffset = useCallback((a: number) => {
     const min = 0
-    const max = data.length * 210 - (ref.current?.offsetWidth || 0) - 10
+    const max = data.length * width - (ref.current?.offsetWidth || 0) - 10
 
-    if (a > max && a - max < 210) setOffset(max)
-    else if (a < 0 && min - a < 210) setOffset(min)
+    if (a > max && a - max < width) setOffset(max)
+    else if (a < 0 && min - a < width) setOffset(min)
     else setOffset(a > max ? min : a < min ? max : a)
   }, [])
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      changeOffset(offset + 210)
+      changeOffset(offset + width)
     }, 5000)
 
     return () => clearTimeout(timer)
@@ -51,7 +51,7 @@ export default function Partners() {
         <div className={style.Slider}>
           <div
             className={style.Arrow}
-            onClick={() => changeOffset(offset - 210)}
+            onClick={() => changeOffset(offset - width)}
           >
             <LongArrow.Left />
           </div>
@@ -65,7 +65,12 @@ export default function Partners() {
               {data.map((item, index) => (
                 <a key={index} className={style.Item} href={item.link}>
                   {item.image ? (
-                    <Image src={item.image} alt="partner" layout="fill" />
+                    <Image
+                      src={item.image}
+                      alt="partner"
+                      layout="fill"
+                      objectFit="contain"
+                    />
                   ) : (
                     <Primary className={style.Primary}>Partner</Primary>
                   )}
@@ -75,7 +80,7 @@ export default function Partners() {
           </div>
           <div
             className={style.Arrow}
-            onClick={() => changeOffset(offset + 210)}
+            onClick={() => changeOffset(offset + width)}
           >
             <LongArrow.Right />
           </div>

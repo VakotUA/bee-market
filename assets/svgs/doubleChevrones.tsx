@@ -4,8 +4,8 @@ const SvgComponent1 = (props: SVGProps<SVGSVGElement>) => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"
-    width={props.width || 13}
-    height={props.height || 13}
+    width={props.width || 14}
+    height={props.height || 14}
     viewBox="0 0 13.25 13"
   >
     <polygon
@@ -25,8 +25,8 @@ const SvgComponent2 = (props: SVGProps<SVGSVGElement>) => (
   <svg
     {...props}
     xmlns="http://www.w3.org/2000/svg"
-    width={props.width || 13}
-    height={props.height || 13}
+    width={props.width || 14}
+    height={props.height || 14}
     viewBox="0 0 13.25 13"
   >
     <polygon

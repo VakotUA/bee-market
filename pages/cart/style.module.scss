@@ -6,6 +6,20 @@
     font-weight: 900;
     margin-top: 26px;
     letter-spacing: 0.1rem;
+    padding-left: 20px;
+  }
+}
+
+.Content {
+  margin-top: 30px;
+  padding: 0;
+  border: 1px solid $lightenDarkColor;
+
+  max-width: 1360px;
+
+  @media (max-width: 1360px) {
+    border-left: none;
+    border-left: right;
   }
 }
 
@@ -13,9 +27,25 @@
   margin-top: 26px;
 
   padding-bottom: 170px;
-  border: 1px solid $lightenDarkColor;
+  @media (max-width: 960px) {
+    padding-bottom: 70px;
+  }
 
   display: flex;
+  position: relative;
+
+  @media (max-width: 960px) {
+    flex-direction: column-reverse;
+
+    .Collumn {
+      width: 100% !important;
+
+      .Title {
+        padding-inline: 20px;
+        margin: 0 !important;
+      }
+    }
+  }
 
   .Collumn {
     width: 50%;
@@ -65,8 +95,18 @@
     height: 50px;
 
     position: absolute;
-    right: 83px;
+    right: 40px;
     bottom: 60px;
+
+    @media (max-width: 960px) {
+      right: 0;
+      margin-inline: 20px;
+      bottom: 10px;
+    }
+
+    @media (max-width: $md6) {
+      width: calc(100% - 40px);
+    }
 
     font-size: 16px;
     font-weight: 700;
@@ -77,20 +117,32 @@
   width: 100%;
   background-color: $primaryColor2;
   border: 1px solid $primaryColor2;
-  border-left: none;
+  margin-inline: 20px;
+
+  @media (min-width: 960px) {
+    border-left: none;
+    border-right: none;
+    margin-inline: 0;
+  }
 
   position: relative;
 
-  &::after {
+  &::after,
+  &::before {
     content: '';
     display: block;
     width: 1px;
     height: 100%;
     background-color: $primaryColor2;
     position: absolute;
-
-    left: -1px;
     top: 0;
+  }
+
+  &::after {
+    left: -1px;
+  }
+  &::before {
+    right: -1px;
   }
 
   ul {
@@ -118,6 +170,12 @@
   display: flex;
   align-items: flex-end;
   flex-direction: column;
+
+  width: 100%;
+
+  @media (max-width: 960px) {
+    padding-inline: 20px;
+  }
 
   .Button {
     margin-top: 24px;
@@ -182,6 +240,9 @@
     }
 
     padding-inline: 36px;
+    @media (max-width: 960px) {
+      padding-inline: 20px;
+    }
     width: 100%;
 
     .Title {

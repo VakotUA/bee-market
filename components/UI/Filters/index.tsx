@@ -4,8 +4,10 @@ import classNames from 'classnames'
 import style from './style.module.scss'
 import Image from 'next/image'
 
-import Image1 from '../../../assets/images/select_image_unselected.png'
-import Image2 from '../../../assets/images/select_image_selected.png'
+// import Image1 from '../../../assets/images/select_image_unselected.png'
+// import Image2 from '../../../assets/images/select_image_selected.png'
+
+import { Hexagon } from '../../../assets/svgs/hexagon'
 
 export interface IFilter {
   title: string
@@ -43,11 +45,11 @@ export function Filters({ filters, setFilters }: Props) {
                         key={index}
                       >
                         <span>
-                          <Image src={Image1} alt="unselecten" />
+                          <Hexagon.Outline />
                         </span>
                         {value.selected && (
                           <span>
-                            <Image src={Image2} alt="selected" />
+                            <Hexagon.Yellow width={10} height={10} />
                           </span>
                         )}
                         {value.value}

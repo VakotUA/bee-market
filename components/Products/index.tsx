@@ -7,6 +7,21 @@ import { BiChevronUp } from 'react-icons/bi'
 import { Select, OptionType } from '../UI/Select'
 import classNames from 'classnames'
 
+const options: OptionType[] = [
+  {
+    value: 'name',
+    lable: 'Назва',
+  },
+  {
+    value: 'price',
+    lable: 'Ціна',
+  },
+  {
+    value: 'discount',
+    lable: 'Знижка',
+  },
+]
+
 export type Props = {
   data?: IProduct[]
   sort?: boolean | false
@@ -14,20 +29,6 @@ export type Props = {
 }
 
 export default function Products(props: Props) {
-  const [options, setOptions] = useState<OptionType[]>([
-    {
-      value: 'name',
-      lable: 'Назва',
-    },
-    {
-      value: 'price',
-      lable: 'Ціна',
-    },
-    {
-      value: 'discount',
-      lable: 'Знижка',
-    },
-  ])
   const [data, setData] = useState(props.data)
 
   // order: [Ціна, Назва, Знижка...],

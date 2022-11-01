@@ -48,10 +48,6 @@
           color: $primaryColor1;
         }
 
-        .Icon {
-          font-size: 24px;
-        }
-
         input {
           font-size: 14px;
           font-weight: 600;
@@ -212,10 +208,6 @@
           justify-content: center;
           gap: 0.25rem;
 
-          .Icon {
-            font-size: 16px;
-          }
-
           @media (max-width: $md5) {
             width: 30px;
             p {
@@ -250,7 +242,7 @@
         .Image {
           position: absolute;
           right: 0;
-          top: -4px;
+          top: -3px;
         }
         .Count {
           position: absolute;

@@ -1,7 +1,7 @@
 import style from './style.module.scss'
 import { Container } from '../Layout/Container'
 import { useState, useEffect, useCallback } from 'react'
-import Hex from '../../assets/svgs/hex'
+import { Hexagon } from '../../assets/svgs/hexagon'
 import classNames from 'classnames'
 import { IUser } from '../../modules/models/User'
 import Image from 'next/image'
@@ -109,7 +109,11 @@ export default function Reviews() {
               >
                 <div className={style.ItemContent}>
                   <div className={style.ImageBlock}>
-                    <Hex width={160} height={160} className={style.Hex} />
+                    <Hexagon.Yellow
+                      width={160}
+                      height={160}
+                      className={style.Hex}
+                    />
                     <div className={style.Image}>
                       {user?.image && (
                         <Image
@@ -149,7 +153,7 @@ export default function Reviews() {
                   className={classNames({ [style.Active]: active === index })}
                   onClick={() => toggleActive(index)}
                 >
-                  <Hex />
+                  <Hexagon.Yellow />
                 </div>
               ))}
             </div>

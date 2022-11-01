@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import style from './style.module.scss'
 
 import Link from 'next/link'
@@ -5,19 +7,15 @@ import Link from 'next/link'
 import { UI } from '../UI'
 const { Container, BurgerMenu, Button, NavLink, Primary } = UI
 
-import { BsPersonFill } from 'react-icons/bs'
-import { IoMdSearch } from 'react-icons/io'
-
-import Background from '../../assets/images/header_background.png'
-import Logo from '../../assets/images/logo_header.png'
-
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
-import Facebook from '../../assets/images/facebook.png'
-import HexagonCart from '../../assets/images/hexagon_cart.png'
-import HexagonSmall from '../../assets/images/hexagon_small.png'
-import Instagram from '../../assets/images/instagram.png'
-import Telegram from '../../assets/images/telegram.png'
+import Background from '../../assets/images/head_line.png'
+
+import { Search } from '../../assets/svgs/search'
+import { Logo } from '../../assets/svgs/logo'
+import { Facebook } from '../../assets/svgs/facebook'
+import { Telegram } from '../../assets/svgs/telegram'
+import { Instagram } from '../../assets/svgs/instagram'
+
 import { useDebounce } from '../../modules/hooks/useDebounce'
 
 import classNames from 'classnames'
@@ -30,6 +28,8 @@ import { useSession } from 'next-auth/react'
 
 import { MEDIA_LINKS } from '../../lib/constants'
 import CartModal from '../ModalWindows/Cart'
+import { User } from '../../assets/svgs/user'
+import { Hexagon } from '../../assets/svgs/hexagon'
 
 const count = 0 // temporary products in cart count
 
@@ -78,20 +78,22 @@ export default function Header() {
           </nav>
         </div>
 
-        <Image
-          src={Background}
-          alt="background"
-          className={style.Background}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center top"
-        />
+        <div>
+          <Image
+            src={Background}
+            alt="background"
+            className={style.Background}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center top"
+          />
+        </div>
 
         <div className={style.Content}>
           <div className={style.SubHeader}>
             <Container className={style.Container}>
               <span className={style.Search}>
-                <IoMdSearch className={style.Icon} />
+                <Search className={style.Icon} />
                 <input
                   type="text"
                   placeholder="Пошук"
@@ -119,7 +121,7 @@ export default function Header() {
                 <Link href="/">
                   <a className={style.Logo}>
                     <div className={style.Image}>
-                      <Image src={Logo} alt="logo" />
+                      <Logo.Black />
                     </div>
                     <p>
                       <Primary className={style.Bee}>BEE</Primary> MARKET
@@ -129,31 +131,31 @@ export default function Header() {
 
                 <div className={style.Socials}>
                   <div className={style.Particle}>
-                    <Image src={HexagonSmall} alt="hex" />
+                    <Hexagon.Yellow width={26} height={20} />
                   </div>
                   <div className={style.Particle}>
-                    <Image src={HexagonSmall} alt="hex" />
+                    <Hexagon.Yellow width={34} height={20} />
                   </div>
                   <a
                     href={MEDIA_LINKS.TELEGRAM_LINK}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Image src={Telegram} alt="telegram" />
+                    <Telegram.Hexagon width={30} height={30} />
                   </a>
                   <a
                     href={MEDIA_LINKS.INSTAGRAM_LINK}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Image src={Instagram} alt="instagram" />
+                    <Instagram.Hexagon width={30} height={30} />
                   </a>
                   <a
                     href={MEDIA_LINKS.FACEBOOK_LINK}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Image src={Facebook} alt="facebook" />
+                    <Facebook.Hexagon width={30} height={30} />
                   </a>
                 </div>
               </div>
@@ -178,7 +180,7 @@ export default function Header() {
                 <Button className={style.Button} primary>
                   <Link href="/profile">
                     <a>
-                      <BsPersonFill className={style.Icon} />
+                      <User />
                       <p>{session ? session?.user?.name : 'Мій кабінет'}</p>
                     </a>
                   </Link>
@@ -189,11 +191,11 @@ export default function Header() {
                   onClick={() => dispatch(toggleCartModal())}
                 >
                   <div className={style.Particle}>
-                    <Image src={HexagonSmall} alt="hex" />
+                    <Hexagon.Yellow width={20} height={20} />
                   </div>
                   <p>Кошик</p>
                   <div className={style.Image}>
-                    <Image src={HexagonCart} alt="hex" />
+                    <Hexagon.Black width={36} height={36} />
                   </div>
                   <p className={style.Count}>
                     {Math.min(Math.max(0, count), 999)}

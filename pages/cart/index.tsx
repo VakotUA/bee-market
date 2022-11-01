@@ -8,7 +8,7 @@ export default function CatalogPage() {
   return (
     <>
       <History />
-      <Container>
+      <Container className={style.Content}>
         <div className={style.Title}>
           <h1>ВАШ КОШИК</h1>
         </div>

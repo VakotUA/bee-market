@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-import ADSImage1 from '../../assets/images/ads_1.png'
-import ADSImage2 from '../../assets/images/ads_2.png'
-import ADSImage3 from '../../assets/images/ads_3.png'
-import ADSImage4 from '../../assets/images/ads_4.png'
+import ADSImage1 from '../../assets/images/banner/banner_1.png'
+import ADSImage2 from '../../assets/images/banner/banner_2.png'
+import ADSImage3 from '../../assets/images/banner/banner_3.png'
+import ADSImage4 from '../../assets/images/banner/banner_4.png'
 import ADS from '../../components/ADS'
 
 import Form from '../../components/Form'
@@ -313,8 +313,8 @@ export default function SigleProductPage() {
         <div className={style.Title}>
           <h2>Подібні товари</h2>
         </div>
+        <Products data={moc_similarProducts} className={style.Products} />
       </Container>
-      <Products data={moc_similarProducts} className={style.Products} />
       <ADS image_s={ADSImage3.src} image_l={ADSImage4.src} reverse />
       <Form />
     </>

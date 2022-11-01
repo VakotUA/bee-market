@@ -6,12 +6,13 @@ import classNames from 'classnames'
 import { Dispatch, SetStateAction, useState } from 'react'
 
 import Background from '../../assets/images/footer_background.png'
-import Logo from '../../assets/images/logo_footer.png'
+import { Logo } from '../../assets/svgs/logo'
 import { Primary } from '../UI/PrimaryText'
 
-import Telegram from '../../assets/images/telegram_bgfree.png'
-import Instagram from '../../assets/images/instagram_bgfree.png'
-import Facebook from '../../assets/images/facebook_bgfree.png'
+import { Facebook } from '../../assets/svgs/facebook'
+import { Telegram } from '../../assets/svgs/telegram'
+import { Instagram } from '../../assets/svgs/instagram'
+
 import { Button } from '../UI/Button'
 
 import { MEDIA_LINKS } from '../../lib/constants'
@@ -282,7 +283,9 @@ export function Contacts() {
 
       <a href="tel:+38(063)5028874">+38 (063) 502 88 74</a>
 
-      <Button className={style.Button} primary>ЗАМОВИТИ ДЗВІНОК</Button>
+      <Button className={style.Button} primary>
+        ЗАМОВИТИ ДЗВІНОК
+      </Button>
     </div>
   )
 }
@@ -292,13 +295,7 @@ export function LogoAndMedia() {
       <Link href="/">
         <a className={style.Logo}>
           <div className={style.Image}>
-            <Image
-              src={Logo}
-              alt="logo"
-              width={39}
-              height={54}
-              layout="fixed"
-            />
+            <Logo.White />
           </div>
           <p>
             <Primary className={style.Bee}>BEE</Primary> MARKET
@@ -308,15 +305,15 @@ export function LogoAndMedia() {
 
       <div className={style.Media}>
         <a href={MEDIA_LINKS.TELEGRAM_LINK} target="_blank" rel="noreferrer">
-          <Image src={Telegram} alt="telegram" />
+          <Telegram.Single width={20} height={20} />
         </a>
 
         <a href={MEDIA_LINKS.INSTAGRAM_LINK} target="_blank" rel="noreferrer">
-          <Image src={Instagram} alt="instagram" />
+          <Instagram.Single width={20} height={20} />
         </a>
 
         <a href={MEDIA_LINKS.FACEBOOK_LINK} target="_blank" rel="noreferrer">
-          <Image src={Facebook} alt="facebook" />
+          <Facebook.Single width={20} height={20} />
         </a>
       </div>
     </>

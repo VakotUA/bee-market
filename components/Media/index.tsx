@@ -5,11 +5,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import style from './style.module.scss'
 
-import Facebook from '../../assets/images/facebook_outlined.png'
-import Instagram from '../../assets/images/instagram_outlined.png'
-import Telegram from '../../assets/images/telegram_outlined.png'
+// import Facebook from '../../assets/images/facebook_outlined.png'
+// import Instagram from '../../assets/images/instagram_outlined.png'
+// import Telegram from '../../assets/images/telegram_outlined.png'
 
-import BgImage from '../../assets/images/media_background.png'
+import BgImage from '../../assets/images/Graf.png'
 
 import { MEDIA_LINKS } from '../../lib/constants'
 
@@ -63,7 +63,7 @@ export default function Media() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Image src={Telegram} alt="telegram" />
+                {/* <Image src={Telegram} alt="telegram" /> */}
               </a>
 
               <a
@@ -71,7 +71,7 @@ export default function Media() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Image src={Instagram} alt="instagram" />
+                {/* <Image src={Instagram} alt="instagram" /> */}
               </a>
 
               <a
@@ -79,7 +79,7 @@ export default function Media() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Image src={Facebook} alt="facebook" />
+                {/* <Image src={Facebook} alt="facebook" /> */}
               </a>
             </div>
 

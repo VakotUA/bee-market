@@ -164,6 +164,10 @@
       justify-content: center;
       gap: 50px;
 
+      @media (max-width: $md4) {
+        gap: 10px;
+      }
+
       .Arrow {
         color: $darkColor;
         cursor: pointer;

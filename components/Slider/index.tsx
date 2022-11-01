@@ -10,14 +10,13 @@ import style from './style.module.scss'
 
 import { useEffect, useState } from 'react'
 
-import SliderTransition from '../../assets/images/slider_paint_transition.png'
-import PaintStrokes from '../../public/sliderImages/paint_strokes.png'
+import SliderTransition from '../../assets/images/slider/Slide_line.png'
+import PaintStrokes from '../../assets/images/slider/Slider_Splash.png'
 
-const sliderImages = [
-  '/sliderImages/1.png',
-  '/sliderImages/background_1.png',
-  '/sliderImages/3.jpg',
-] // any resolution
+import Slide_1 from '../../assets/images/slider/Slide_1.png'
+import Slide_2 from '../../assets/images/slider/Slide_2.png'
+
+const sliderImages = [Slide_1, Slide_2] // any resolution
 
 export default function Slider() {
   const [counter, setCounter] = useState<number>(0)
@@ -48,9 +47,9 @@ export default function Slider() {
       <div className={style.Transition}>
         <Image
           src={SliderTransition}
-          layout="fixed"
-          width={1920}
-          height={30}
+          layout="fill"
+          objectFit="contain"
+          objectPosition="center bottom"
           alt="transition"
         />
       </div>

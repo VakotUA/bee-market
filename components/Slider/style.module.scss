@@ -9,10 +9,7 @@
   position: relative;
 
   .Transition {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -4px;
+    pointer-events: none;
   }
 
   .SliderImage {

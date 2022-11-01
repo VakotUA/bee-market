@@ -5,12 +5,13 @@ import ADS from '../components/ADS'
 import Discount from '../components/Promotional'
 import Media from '../components/Media'
 
-import ADSImage1 from '../assets/images/ads_1.png'
-import ADSImage2 from '../assets/images/ads_2.png'
-import ADSImage3 from '../assets/images/ads_3.png'
-import ADSImage4 from '../assets/images/ads_4.png'
+import ADSImage1 from '../assets/images/banner/Banner_1.png'
+import ADSImage2 from '../assets/images/banner/Banner_2.png'
+import ADSImage3 from '../assets/images/banner/Banner_3.png'
+import ADSImage4 from '../assets/images/banner/Banner_4.png'
+
 import Reviews from '../components/Reviews'
-import Partners from '../components/Partners'
+import Parthners from '../components/Parthners'
 import Form from '../components/Form'
 
 const Main: NextPage = () => {
@@ -23,7 +24,7 @@ const Main: NextPage = () => {
       <Media />
       <ADS image_s={ADSImage3.src} image_l={ADSImage4.src} reverse />
       <Reviews />
-      <Partners />
+      <Parthners />
       <Form />
     </>
   )
