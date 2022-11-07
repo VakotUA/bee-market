@@ -1,6 +1,7 @@
 export interface ICategory {
-  id: number | string
+  id: number
   name: string
+  name_ru: string
+  slug: string
   image?: string
-  description?: string
 }

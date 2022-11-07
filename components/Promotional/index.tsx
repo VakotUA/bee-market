@@ -12,6 +12,7 @@ import MOCImage from '../../assets/images/moc/moc_product.png'
 
 import { Container } from '../Layout/Container'
 import { Button } from '../UI/Button'
+import { useGetAllProductsQuery } from '../../api/productApi/product.api'
 
 const moc_categories = [
   {
@@ -31,87 +32,92 @@ const moc_categories = [
     lable: 'Витратні матеріали',
   },
 ]
-const moc_products = [
-  {
-    id: '1111111111',
-    name: 'qДиск для тріммера',
-    link: '/123',
-    price: 150,
-    discount: 1,
-  },
-  {
-    id: '2222222222',
-    name: 'wДиск для тріммера Gartner 255x25,4 мм 40',
-    link: '/123',
-    price: 250,
-    discount: 5,
-  },
-  {
-    id: '33333333333',
-    name: 'eДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
-    image: MOCImage.src,
-    link: '/123',
-    price: 350,
-    discount: 3,
-  },
-  {
-    id: '44444444444',
-    name: 'rДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
-    image: MOCImage.src,
-    link: '/123',
-    price: 550,
-    discount: 2,
-  },
-  {
-    id: '55555555555',
-    name: '',
-    image: MOCImage.src,
-    link: '/123',
-    price: 450,
-    discount: 7,
-  },
-  {
-    id: '66666666666',
-    name: 'tДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
-    link: '/123',
-    price: 950,
-    discount: 4,
-  },
-  {
-    id: '77777777777',
-    name: 'yДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
-    link: '/123',
-    price: 750,
-    discount: 9,
-  },
-  {
-    id: '888888888888',
-    name: 'uДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
-    image: MOCImage.src,
-    link: '/123',
-    price: 850,
-    discount: 15,
-  },
-  {
-    id: '999999999999',
-    name: 'iДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців',
-    link: '/123',
-    price: 650,
-    discount: 7,
-  },
-  {
-    id: '000000000000',
-    name: 'oДиск для тріммера Gartner 255x25,4',
-    image: MOCImage.src,
-    link: '/123',
-    price: 50,
-    discount: 8,
-  },
-]
+// const moc_products = [
+//   {
+//     id: '1111111111',
+//     name: 'qДиск для тріммера',
+//     link: '/123',
+//     price: 150,
+//     discount: 1,
+//   },
+//   {
+//     id: '2222222222',
+//     name: 'wДиск для тріммера Gartner 255x25,4 мм 40',
+//     link: '/123',
+//     price: 250,
+//     discount: 5,
+//   },
+//   {
+//     id: '33333333333',
+//     name: 'eДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
+//     image: MOCImage.src,
+//     link: '/123',
+//     price: 350,
+//     discount: 3,
+//   },
+//   {
+//     id: '44444444444',
+//     name: 'rДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
+//     image: MOCImage.src,
+//     link: '/123',
+//     price: 550,
+//     discount: 2,
+//   },
+//   {
+//     id: '55555555555',
+//     name: '',
+//     image: MOCImage.src,
+//     link: '/123',
+//     price: 450,
+//     discount: 7,
+//   },
+//   {
+//     id: '66666666666',
+//     name: 'tДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
+//     link: '/123',
+//     price: 950,
+//     discount: 4,
+//   },
+//   {
+//     id: '77777777777',
+//     name: 'yДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)Диск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
+//     link: '/123',
+//     price: 750,
+//     discount: 9,
+//   },
+//   {
+//     id: '888888888888',
+//     name: 'uДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців (40023448)',
+//     image: MOCImage.src,
+//     link: '/123',
+//     price: 850,
+//     discount: 15,
+//   },
+//   {
+//     id: '999999999999',
+//     name: 'iДиск для тріммера Gartner 255x25,4 мм 40 ТВЗ зубців',
+//     link: '/123',
+//     price: 650,
+//     discount: 7,
+//   },
+//   {
+//     id: '000000000000',
+//     name: 'oДиск для тріммера Gartner 255x25,4',
+//     image: MOCImage.src,
+//     link: '/123',
+//     price: 50,
+//     discount: 8,
+//   },
+// ]
 
 export default function Discount() {
-  const defaultData = moc_products
-  const [data, setData] = useState<IProduct[]>(defaultData)
+  // const defaultData = moc_products
+  const { data: products } = useGetAllProductsQuery('')
+  const [data, setData] = useState<IProduct[]>()
+
+  useEffect(() => {
+    setData(products)
+  }, [products])
 
   // filter [0] = filter by all categories
   // filter [category_id] = filter by specific category

@@ -9,17 +9,17 @@ import classNames from 'classnames'
 
 const options: OptionType[] = [
   {
-    value: 'name',
+    value: 'title',
     lable: 'Назва',
   },
-  {
-    value: 'price',
-    lable: 'Ціна',
-  },
-  {
-    value: 'discount',
-    lable: 'Знижка',
-  },
+  // {
+  //   value: 'price',
+  //   lable: 'Ціна',
+  // },
+  // {
+  //   value: 'discount',
+  //   lable: 'Знижка',
+  // },
 ]
 
 export type Props = {
@@ -29,34 +29,41 @@ export type Props = {
 }
 
 export default function Products(props: Props) {
-  const [data, setData] = useState(props.data)
+  const { data: products } = props
+  const [data, setData] = useState<IProduct[]>()
+
+  useEffect(() => {
+    setData(products)
+  }, [products])
 
   // order: [Ціна, Назва, Знижка...],
   // direction: [за зростанням, за спаданням]
   const [sorting, setSorting] = useState<{
     order: keyof IProduct
     direction: boolean
-  }>({ order: 'name', direction: true })
+  }>({ order: 'title', direction: true })
 
-  useEffect(() => {
-    if (!props.data) return
+  // useEffect(() => {
+  //   if (!products) return
 
-    setData([
-      ...props.data.sort((a, b) =>
-        (a[sorting.order] as any) > (b[sorting.order] as any) &&
-        sorting.direction
-          ? 1
-          : -1
-      ),
-    ])
-  }, [props.data, setData, sorting])
+  //   const copy = [...products]
+
+  //   setData([
+  //     copy.sort((a, b) =>
+  //       (a[sorting.order] as any) > (b[sorting.order] as any) &&
+  //       sorting.direction
+  //         ? 1
+  //         : -1
+  //     ),
+  //   ])
+  // }, [products, setData, sorting])
 
   if (!data)
     return (
       <section className={classNames(style.Products, props.className)}>
         <Container>
           <h1 style={{ fontSize: 48, fontWeight: 800 }}>
-            No products found :(
+            {'No products found :('}
           </h1>
         </Container>
       </section>
@@ -100,7 +107,7 @@ export default function Products(props: Props) {
         <div className={style.List}>
           {data && (
             <ul>
-              {data.map((item) => (
+              {data.map((item: IProduct) => (
                 <li key={item.id}>
                   <Card product={item} />
                 </li>

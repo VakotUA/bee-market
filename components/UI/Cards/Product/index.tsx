@@ -14,6 +14,7 @@ import { ICategory } from '../../../../modules/models/Category'
 
 import { useAppDispatch } from '../../../../modules/store/hooks'
 import { modalsSlice } from '../../../../modules/store/reducers/modalsSlice'
+import { useGetProductDetailByIdQuery } from '../../../../api/productApi/product.api'
 
 export type Props = {
   product: IProduct
@@ -22,9 +23,8 @@ export type Props = {
 }
 
 export function Card(props: Props) {
-  // const {data} = useGetCategoryByProductId(props.product.id)
-  const category = 'paint_materials' // .link
-  const sub_category = 'paints' // .link
+  const { product } = props
+  const { data: details } = useGetProductDetailByIdQuery(product?.id)
 
   const dispatch = useAppDispatch()
   const { toggleCartModal } = modalsSlice.actions
@@ -36,41 +36,42 @@ export function Card(props: Props) {
     >
       <Link
         href={{
-          pathname: '/catalog/[category]/[sub_category]/[product]',
+          pathname: '/catalog/1/[id]',
           query: {
-            category: category,
-            sub_category: sub_category,
-            product: props.product.id,
+            id: product?.id,
           },
         }}
       >
         <a>
           <div className={style.Image}>
             <Image
-              src={props.product.image || NotFound.src}
+              src={details?.data?.photos[0]?.url || NotFound.src}
               alt="product"
               width={512}
               height={512}
-              style={{ opacity: props.product.image ? 1 : 0.25 }}
+              style={{ opacity: details?.data?.photos[0]?.url ? 1 : 0.25 }}
               layout="responsive"
               objectPosition="top center"
               objectFit="contain"
             />
 
-            {props.product.discount && (
+            {/* {props.product.discount && (
               <DiscountMark
                 value={props.product.discount}
                 className={style.DiscountMark}
               />
-            )}
+            )} */}
           </div>
 
           <div className={style.Description}>
-            <p>{props.product.name}</p>
+            <p>{product?.title}</p>
             <div>
-              <p>{props.product.id}</p>
+              <p>{product?.id}</p>
               <span>
-                <p>{props.product.price}грн</p>
+                <p>
+                  {details?.data?.stockrecords?.price}
+                  {details?.data?.stockrecords?.price_currency}
+                </p>
                 <Button
                   className={style.Button}
                   onClick={(e) => {
