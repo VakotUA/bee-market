@@ -1,25 +1,20 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { IBaseQuery, IAllProductsQuery } from './product.api.types'
+import { API_DOMAIN_URL } from '../../lib/constants'
+import { IBaseQuery, AllProductsQuery } from './product.api.types'
 
 export const productApi = createApi({
   reducerPath: 'productApi',
   refetchOnReconnect: true,
-  baseQuery: fetchBaseQuery({ baseUrl: `/api/` }),
+  baseQuery: fetchBaseQuery({ baseUrl: `${API_DOMAIN_URL}/api/v2/` }),
   endpoints: (build) => ({
-    getProductById: build.query<IBaseQuery, string>({
-      query: (id) => `product/${id}`,
+    getProductDetailById: build.query<IBaseQuery, number>({
+      query: (id) => `product/detail/${id}/`,
     }),
-    // getProductByCategory: build.query<IBaseQuery, string>({
-    //   query: (category) => `category/${category}/product`,
-    // }),
-    getAllProducts: build.query<IAllProductsQuery, string>({
-      query: () => 'product',
+    getAllProducts: build.query<AllProductsQuery, string>({
+      query: () => `products`,
     }),
   }),
 })
 
-export const {
-  useGetProductByIdQuery,
-  // useGetProductByCategoryQuery,
-  useGetAllProductsQuery,
-} = productApi
+export const { useGetProductDetailByIdQuery, useGetAllProductsQuery } =
+  productApi

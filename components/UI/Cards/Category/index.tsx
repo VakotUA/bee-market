@@ -21,9 +21,9 @@ export function Card(props: Props) {
     >
       <Link
         href={{
-          pathname: '/catalog/[category]',
+          pathname: '/catalog/[slug]',
           query: {
-            category: props.category.id,
+            slug: props.category.slug,
           },
         }}
       >

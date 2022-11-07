@@ -1,11 +1,11 @@
-import { IProduct } from '../../modules/models/Product'
+import { IDetails, IProduct } from '../../modules/models/Product'
 
 export interface IBaseQuery {
   success: boolean
-  data: IProduct
+  data: IDetails
 }
 
-export interface IAllProductsQuery {
+export interface AllProductsQuery {
   success: boolean
   data: IProduct[]
 }
